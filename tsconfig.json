@@ -30,5 +30,11 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "AIGC作品集网站_完整打包_*",
+    "db/**/*",
+    "worker/**/*",
+    "drizzle.config.ts"
+  ]
 }

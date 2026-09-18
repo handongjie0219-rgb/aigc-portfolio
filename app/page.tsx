@@ -282,7 +282,7 @@ export default function Home() {
         <div className="profile-orbit" aria-hidden="true"><span>CREATIVE</span><span>DESIGN</span><span>AIGC</span></div>
         <div className="profile-photo-wrap">
           <span className="profile-photo-index">PORTRAIT / 01</span>
-          <img src="/profile-hdj.png" alt="韩东杰个人肖像" className="profile-photo" />
+          <img src="./profile-hdj.png" alt="韩东杰个人肖像" className="profile-photo" />
           <div className="profile-photo-caption"><b>HDJ</b><span>VISUAL CREATOR · 2026</span></div>
         </div>
         <div className="profile-content">
@@ -357,9 +357,9 @@ export default function Home() {
           </div>
         </section>
 
-        {leafyOpen && <div className="script-document leafy-document" role="dialog" aria-modal="true" aria-label="Leafy IP完整设计提案" onClick={() => setLeafyOpen(false)}><button className="script-close" onClick={() => setLeafyOpen(false)}>关闭内容 ×</button><article className="leafy-page" onClick={event=>event.stopPropagation()}><header><span>IP DESIGN · CASE 01</span><h2>Leafy<em>与小小的叶子，走进更温暖的日常。</em></h2><p>角色三视图 · 表情延展 · 色彩方案 · 细节展示 · 周边应用</p></header><div className="leafy-gallery">{["主视觉与角色定位","角色三视图","表情延展系统","品牌色彩方案","造型细节展示","周边应用系统"].map((title,index)=><figure key={title}><img src={`/ip-design/leafy/${index+1}.png`} alt={`Leafy ${title}`} /><figcaption><span>{String(index+1).padStart(2,"0")}</span><b>{title}</b></figcaption></figure>)}</div></article></div>}
-        {breezyOpen && <div className="script-document breezy-document" role="dialog" aria-modal="true" aria-label="Breezy IP完整设计提案" onClick={() => setBreezyOpen(false)}><button className="script-close" onClick={() => setBreezyOpen(false)}>关闭内容 ×</button><article className="breezy-page" onClick={event=>event.stopPropagation()}><header><span>IP DESIGN · CASE 02</span><h2>BREEZY<em>轻盈风感，户外随行。</em></h2><p>角色设计 · 表情延展 · 产品展示 · 细节设计 · 配色方案 · 场景应用</p></header><div className="breezy-gallery">{[{file:7,title:"主视觉与角色定位"},{file:1,title:"角色三视图"},{file:2,title:"表情延展"},{file:3,title:"产品展示"},{file:4,title:"细节展示"},{file:5,title:"配色方案"},{file:6,title:"场景应用"}].map(item=><figure key={item.title}><img src={`/ip-design/breezy/${item.file}.png`} alt={`Breezy ${item.title}`} /><figcaption><b>{item.title}</b></figcaption></figure>)}</div></article></div>}
-        {moriOpen && <div className="script-document mori-document" role="dialog" aria-modal="true" aria-label="Mori IP完整设计提案" onClick={() => setMoriOpen(false)}><button className="script-close" onClick={() => setMoriOpen(false)}>关闭内容 ×</button><article className="mori-page" onClick={event=>event.stopPropagation()}><header><span>IP DESIGN · CASE 03</span><h2>Mori<em>一点小光，温暖更大的世界。</em></h2><p>角色介绍 · 角色三视图 · 表情延展 · 细节展示 · 场景应用</p></header><div className="mori-gallery">{[{file:1,title:"主视觉与角色定位"},{file:2,title:"角色介绍"},{file:3,title:"角色三视图"},{file:4,title:"表情延展"},{file:6,title:"细节展示"},{file:5,title:"场景应用"}].map(item=><figure key={item.title}><img src={`/ip-design/mori/${item.file}.png`} alt={`Mori ${item.title}`} /><figcaption><b>{item.title}</b></figcaption></figure>)}</div></article></div>}
+        {leafyOpen && <div className="script-document leafy-document" role="dialog" aria-modal="true" aria-label="Leafy IP完整设计提案" onClick={() => setLeafyOpen(false)}><button className="script-close" onClick={() => setLeafyOpen(false)}>关闭内容 ×</button><article className="leafy-page" onClick={event=>event.stopPropagation()}><header><span>IP DESIGN · CASE 01</span><h2>Leafy<em>与小小的叶子，走进更温暖的日常。</em></h2><p>角色三视图 · 表情延展 · 色彩方案 · 细节展示 · 周边应用</p></header><div className="leafy-gallery">{["主视觉与角色定位","角色三视图","表情延展系统","品牌色彩方案","造型细节展示","周边应用系统"].map((title,index)=><figure key={title}><img src={`./ip-design/leafy/${index+1}.png`} alt={`Leafy ${title}`} /><figcaption><span>{String(index+1).padStart(2,"0")}</span><b>{title}</b></figcaption></figure>)}</div></article></div>}
+        {breezyOpen && <div className="script-document breezy-document" role="dialog" aria-modal="true" aria-label="Breezy IP完整设计提案" onClick={() => setBreezyOpen(false)}><button className="script-close" onClick={() => setBreezyOpen(false)}>关闭内容 ×</button><article className="breezy-page" onClick={event=>event.stopPropagation()}><header><span>IP DESIGN · CASE 02</span><h2>BREEZY<em>轻盈风感，户外随行。</em></h2><p>角色设计 · 表情延展 · 产品展示 · 细节设计 · 配色方案 · 场景应用</p></header><div className="breezy-gallery">{[{file:7,title:"主视觉与角色定位"},{file:1,title:"角色三视图"},{file:2,title:"表情延展"},{file:3,title:"产品展示"},{file:4,title:"细节展示"},{file:5,title:"配色方案"},{file:6,title:"场景应用"}].map(item=><figure key={item.title}><img src={`./ip-design/breezy/${item.file}.png`} alt={`Breezy ${item.title}`} /><figcaption><b>{item.title}</b></figcaption></figure>)}</div></article></div>}
+        {moriOpen && <div className="script-document mori-document" role="dialog" aria-modal="true" aria-label="Mori IP完整设计提案" onClick={() => setMoriOpen(false)}><button className="script-close" onClick={() => setMoriOpen(false)}>关闭内容 ×</button><article className="mori-page" onClick={event=>event.stopPropagation()}><header><span>IP DESIGN · CASE 03</span><h2>Mori<em>一点小光，温暖更大的世界。</em></h2><p>角色介绍 · 角色三视图 · 表情延展 · 细节展示 · 场景应用</p></header><div className="mori-gallery">{[{file:1,title:"主视觉与角色定位"},{file:2,title:"角色介绍"},{file:3,title:"角色三视图"},{file:4,title:"表情延展"},{file:6,title:"细节展示"},{file:5,title:"场景应用"}].map(item=><figure key={item.title}><img src={`./ip-design/mori/${item.file}.png`} alt={`Mori ${item.title}`} /><figcaption><b>{item.title}</b></figcaption></figure>)}</div></article></div>}
 
         <section id="poster" className="poster-showcase">
           <button className="poster-entry" onClick={() => setPosterOpen(true)}>
@@ -387,7 +387,7 @@ export default function Home() {
                     const index = posterWorks.indexOf(work);
                     return (
                       <button className="poster-item" key={work.title} onClick={() => setSelectedPoster(index)} aria-label={`放大查看：${work.title}`}>
-                        <img src={`/posters/${work.file}.webp`} alt={work.title} loading="lazy" />
+                        <img src={`./posters/${work.file}.webp`} alt={work.title} loading="lazy" />
                         <span><b>{String(index + 1).padStart(2, "0")}</b><em>{work.title}</em><i>VIEW ↗</i></span>
                       </button>
                     );
@@ -413,7 +413,7 @@ export default function Home() {
                     <button type="button" onClick={() => setSelectedPoster(index)}>放大查看 ↗</button>
                   </div>
                   <button className="poster-single-image" type="button" onClick={() => setSelectedPoster(index)} aria-label={`放大查看：${work.title}`}>
-                    <img src={`/posters/${work.file}.webp`} alt={work.title} loading="lazy" />
+                    <img src={`./posters/${work.file}.webp`} alt={work.title} loading="lazy" />
                   </button>
                 </section>
               ))}
@@ -422,7 +422,7 @@ export default function Home() {
               {posterGroups.map((group) => <section className="poster-group" key={group.no}>
                 <div className="group-heading"><span>{group.no}</span><div><h3>{group.title}</h3><b>{group.en}</b></div><p>{group.desc}</p></div>
                 <div className={`poster-grid poster-grid-${group.items.length}`}>
-                  {group.items.map((work) => { const index = posterWorks.indexOf(work); return <button className="poster-item" key={work.title} onClick={() => setSelectedPoster(index)} aria-label={`放大查看：${work.title}`}><img src={`/posters/${work.file}.webp`} alt={work.title} loading="lazy" /><span><b>{String(index + 1).padStart(2, "0")}</b><em>{work.title}</em><i>VIEW ↗</i></span></button>; })}
+                  {group.items.map((work) => { const index = posterWorks.indexOf(work); return <button className="poster-item" key={work.title} onClick={() => setSelectedPoster(index)} aria-label={`放大查看：${work.title}`}><img src={`./posters/${work.file}.webp`} alt={work.title} loading="lazy" /><span><b>{String(index + 1).padStart(2, "0")}</b><em>{work.title}</em><i>VIEW ↗</i></span></button>; })}
                 </div>
               </section>)}
             </div>
@@ -452,7 +452,7 @@ export default function Home() {
                 <div className={`type-grid type-count-${group.items.length}`}>
                   {group.items.map((work) => (
                     <button className="type-item" key={work.title} onClick={() => setSelectedType(typeWorks.indexOf(work))} aria-label={`放大查看：${work.title}`}>
-                      <img src={`/typeworks/${work.file}.webp`} alt={work.title} loading="lazy" />
+                      <img src={`./typeworks/${work.file}.webp`} alt={work.title} loading="lazy" />
                       <span><b>{String(typeWorks.indexOf(work) + 1).padStart(2, "0")}</b><em>{work.title}</em><i>VIEW ↗</i></span>
                     </button>
                   ))}
@@ -470,7 +470,7 @@ export default function Home() {
               {typeGroups.map((group) => <section className="type-group" key={group.no}>
                 <div className="type-group-heading"><span>{group.no}</span><div><h3>{group.title}</h3><b>{group.en}</b></div><p>{group.desc}</p></div>
                 <div className={`type-grid type-grid-${group.items.length}`}>
-                  {group.items.map((work) => { const index = typeWorks.indexOf(work); return <button className="type-item" key={work.title} onClick={() => setSelectedType(index)} aria-label={`放大查看：${work.title}`}><img src={`/typeworks/${work.file}.webp`} alt={work.title} loading="lazy" /><span><b>{String(index + 1).padStart(2, "0")}</b><em>{work.title}</em><i>VIEW ↗</i></span></button>; })}
+                  {group.items.map((work) => { const index = typeWorks.indexOf(work); return <button className="type-item" key={work.title} onClick={() => setSelectedType(index)} aria-label={`放大查看：${work.title}`}><img src={`./typeworks/${work.file}.webp`} alt={work.title} loading="lazy" /><span><b>{String(index + 1).padStart(2, "0")}</b><em>{work.title}</em><i>VIEW ↗</i></span></button>; })}
                 </div>
               </section>)}
             </div>
@@ -504,7 +504,7 @@ export default function Home() {
                     const index = bannerWorks.indexOf(work);
                     return (
                       <button className="banner-item" key={work.title} onClick={() => setSelectedBanner(index)} aria-label={`放大查看：${work.title}`}>
-                        <img src={`/banners/${work.file}.webp`} alt={work.title} loading="lazy" />
+                        <img src={`./banners/${work.file}.webp`} alt={work.title} loading="lazy" />
                         <span><b>{String(index + 1).padStart(2, "0")}</b><em>{work.title}</em><i>VIEW ↗</i></span>
                       </button>
                     );
@@ -523,7 +523,7 @@ export default function Home() {
               {bannerWorks.map((work, index) => (
                 <section className="banner-single-page" key={`banner-single-${work.file}`}>
                   <button className="banner-single-image" type="button" onClick={() => setSelectedBanner(index)} aria-label={`放大查看：${work.title}`}>
-                    <img src={`/banners/${work.file}.webp`} alt={work.title} loading="lazy" />
+                    <img src={`./banners/${work.file}.webp`} alt={work.title} loading="lazy" />
                   </button>
                   <div className="banner-single-copy">
                     <span>{String(index + 1).padStart(2, "0")} / BANNER PROJECT</span>
@@ -539,7 +539,7 @@ export default function Home() {
               {bannerGroups.map((group) => <section className="banner-group" key={group.no}>
                 <div className="banner-group-heading"><span>{group.no}</span><div><h3>{group.title}</h3><b>{group.en}</b></div><p>{group.desc}</p></div>
                 <div className={`banner-grid banner-count-${group.items.length}`}>
-                  {group.items.map((work) => { const index = bannerWorks.indexOf(work); return <button className="banner-item" key={work.title} onClick={() => setSelectedBanner(index)} aria-label={`放大查看：${work.title}`}><img src={`/banners/${work.file}.webp`} alt={work.title} loading="lazy" /><span><b>{String(index + 1).padStart(2, "0")}</b><em>{work.title}</em><i>VIEW ↗</i></span></button>; })}
+                  {group.items.map((work) => { const index = bannerWorks.indexOf(work); return <button className="banner-item" key={work.title} onClick={() => setSelectedBanner(index)} aria-label={`放大查看：${work.title}`}><img src={`./banners/${work.file}.webp`} alt={work.title} loading="lazy" /><span><b>{String(index + 1).padStart(2, "0")}</b><em>{work.title}</em><i>VIEW ↗</i></span></button>; })}
                 </div>
               </section>)}
             </div>
@@ -562,8 +562,8 @@ export default function Home() {
           </div>
 
           <div className="ad-film">
-            <video id="video-ootd" controls playsInline preload="metadata" poster="/ai-ads/ootd/2.webp">
-              <source src="/ai-ads/ootd/ootd.mp4" type="video/mp4" />
+            <video id="video-ootd" controls playsInline preload="metadata" poster="./ai-ads/ootd/2.webp">
+              <source src="./ai-ads/ootd/ootd.mp4" type="video/mp4" />
             </video>
             <div className="ad-film-meta"><span>01 / HERO FILM</span><h3>OOTD · AI Fashion Film</h3><p>角色一致性 × 多套造型 × 节奏化剪辑</p></div>
           </div>
@@ -580,7 +580,7 @@ export default function Home() {
             <div className="character-assets">
               {ootdAssets.slice(0, 8).map((name, index) => (
                 <button key={name} onClick={() => setSelectedAdAsset(name)} aria-label={`放大查看角色定妆 ${index + 1}`}>
-                  <img src={`/ai-ads/ootd/${name}.webp`} alt={`OOTD 角色定妆 ${index + 1}`} loading="lazy" />
+                  <img src={`./ai-ads/ootd/${name}.webp`} alt={`OOTD 角色定妆 ${index + 1}`} loading="lazy" />
                   <span>LOOK {String(index + 1).padStart(2, "0")}</span>
                 </button>
               ))}
@@ -592,7 +592,7 @@ export default function Home() {
             <div className="wardrobe-assets">
               {["A", "B"].map((name, index) => (
                 <button key={name} onClick={() => setSelectedAdAsset(name)} aria-label={`放大查看服装资产 ${index + 1}`}>
-                  <img src={`/ai-ads/ootd/${name}.webp`} alt={`OOTD 服装资产 ${index + 1}`} loading="lazy" />
+                  <img src={`./ai-ads/ootd/${name}.webp`} alt={`OOTD 服装资产 ${index + 1}`} loading="lazy" />
                   <span>WARDROBE SET {index + 1}</span>
                 </button>
               ))}
@@ -602,7 +602,7 @@ export default function Home() {
           <div className="asset-block scene-block">
             <div className="asset-title"><span>04</span><div><h3>场景与脚本</h3><b>SCENE & SCRIPT</b></div><p>使用中性影棚场景承载多套造型切换，并通过脚本拆分节奏、动作和转场节点。</p></div>
             <button className="scene-asset" onClick={() => setSelectedAdAsset("场景")} aria-label="放大查看场景资产">
-              <img src="/ai-ads/ootd/场景.webp" alt="OOTD 中性影棚场景" loading="lazy" />
+              <img src="./ai-ads/ootd/场景.webp" alt="OOTD 中性影棚场景" loading="lazy" />
               <span><b>NEUTRAL STUDIO</b><em>统一光线与空间基准</em></span>
             </button>
             <div className="script-card asset-note"><span>PRODUCTION NOTE</span><h3>从静态资产到动态成片</h3><p>人物设定、造型拆解与统一场景共同构成稳定的生成基础。</p><div><b>人物设定</b><i>→</i><b>造型拆解</b><i>→</i><b>场景锁定</b></div></div>
@@ -626,7 +626,7 @@ export default function Home() {
 
           <div className="cat-case">
             <div className="cat-case-head"><span>CASE 02 · PET COMMERCIAL</span><h2>菲力猫粮<em>懂它的一天。</em></h2><p>用“充电”比喻猫咪吃饭、玩耍与休息的能量循环，最后回到等待主人归家的情感价值。</p></div>
-            <div id="video-catfood" className="cat-film"><video controls playsInline preload="metadata" poster="/ai-ads/catfood/product.webp"><source src="/ai-ads/catfood/catfood.mp4" type="video/mp4" /></video><div><span>55.10 SEC · 16:9 · PET STORY</span><h3>从日常能量，到回家的那一刻。</h3></div></div>
+            <div id="video-catfood" className="cat-film"><video controls playsInline preload="metadata" poster="./ai-ads/catfood/product.webp"><source src="./ai-ads/catfood/catfood.mp4" type="video/mp4" /></video><div><span>55.10 SEC · 16:9 · PET STORY</span><h3>从日常能量，到回家的那一刻。</h3></div></div>
             <div className="cat-entry-grid">
               <button className="cat-entry asset-entry" onClick={() => setCatAssetsOpen(true)}><span>01 / ASSET LIBRARY</span><h3>进入分类资产</h3><p>产品包装、角色卡与五组场景空镜</p><b>OPEN ASSETS ↗</b></button>
               <button className="cat-entry document-entry" onClick={() => setCatScriptOpen(true)}><span>02 / FULL DOCUMENT</span><h3>打开完整剧本</h3><p>文学剧本、拍摄脚本与逐镜提示词</p><b>READ SCRIPT ↗</b></button>
@@ -635,16 +635,16 @@ export default function Home() {
 
           {catAssetsOpen && <div className="script-document cat-assets-document" role="dialog" aria-modal="true" aria-label="菲力猫粮分类资产" onClick={() => setCatAssetsOpen(false)}><button className="script-close" onClick={() => setCatAssetsOpen(false)}>关闭资产 ×</button><div className="cat-assets-page" onClick={e=>e.stopPropagation()}>
             <header><span>FELINE FEAST · ASSET LIBRARY</span><h2>项目资产<em>分类归档。</em></h2></header>
-            <section><div className="cat-asset-title"><span>01</span><div><h3>产品资产</h3><b>PRODUCT REFERENCE</b></div></div><img src="/ai-ads/catfood/product.webp" alt="FELINE FEAST 猫粮包装参考" /></section>
-            <section><div className="cat-asset-title"><span>02</span><div><h3>人物与角色</h3><b>CHARACTER REFERENCES</b></div></div><div className="cat-character-grid"><figure><img src="/ai-ads/catfood/cat.webp" alt="虎斑猫角色卡" /><figcaption>P01 · 虎斑猫三视图与表情参考</figcaption></figure><figure><img src="/ai-ads/catfood/owner.webp" alt="年轻女主人角色卡" /><figcaption>P02 · 年轻女主人三视图与表情参考</figcaption></figure></div></section>
-            <section><div className="cat-asset-title"><span>03</span><div><h3>场景资产</h3><b>SCENE REFERENCES</b></div></div><div className="cat-scene-grid">{[1,2,3,4,5].map((n)=><figure key={n}><img src={`/ai-ads/catfood/scene-${n}.webp`} alt={`菲力猫粮场景 ${n}`} /><figcaption>S0{n} · {['晨间木屋露台','复古餐厨空间','复古客厅','玄关与鞋架','金黄色产品棚拍'][n-1]}</figcaption></figure>)}</div></section>
+            <section><div className="cat-asset-title"><span>01</span><div><h3>产品资产</h3><b>PRODUCT REFERENCE</b></div></div><img src="./ai-ads/catfood/product.webp" alt="FELINE FEAST 猫粮包装参考" /></section>
+            <section><div className="cat-asset-title"><span>02</span><div><h3>人物与角色</h3><b>CHARACTER REFERENCES</b></div></div><div className="cat-character-grid"><figure><img src="./ai-ads/catfood/cat.webp" alt="虎斑猫角色卡" /><figcaption>P01 · 虎斑猫三视图与表情参考</figcaption></figure><figure><img src="./ai-ads/catfood/owner.webp" alt="年轻女主人角色卡" /><figcaption>P02 · 年轻女主人三视图与表情参考</figcaption></figure></div></section>
+            <section><div className="cat-asset-title"><span>03</span><div><h3>场景资产</h3><b>SCENE REFERENCES</b></div></div><div className="cat-scene-grid">{[1,2,3,4,5].map((n)=><figure key={n}><img src={`./ai-ads/catfood/scene-${n}.webp`} alt={`菲力猫粮场景 ${n}`} /><figcaption>S0{n} · {['晨间木屋露台','复古餐厨空间','复古客厅','玄关与鞋架','金黄色产品棚拍'][n-1]}</figcaption></figure>)}</div></section>
           </div></div>}
 
           {catScriptOpen && <div className="script-document cat-script-document" role="dialog" aria-modal="true" aria-label="菲力猫粮完整剧本文档" onClick={() => setCatScriptOpen(false)}><button className="script-close" onClick={() => setCatScriptOpen(false)}>关闭文档 ×</button><article className="cat-script-page" onClick={e=>e.stopPropagation()}><header><span>LIBTV PET COMMERCIAL PRODUCTION DOCUMENT</span><h2>菲力猫粮<em>懂它的一天。</em></h2><p>文学剧本｜拍摄脚本｜LibTV 逐镜提示词</p></header><div className="cat-script-content">{catfoodScript.map((line,index)=>{const heading=/^(项目概览|完整旁白|第一部分|第二部分|第三部分|全局生成|镜头 \d+|场景[一二三四五六七]|人物资产|场景资产|产品资产)/.test(line);return heading?<h3 key={index}>{line}</h3>:<p key={index}>{line}</p>})}</div></article></div>}
 
           <div className="cat-case ear-case">
             <div className="cat-case-head ear-case-head"><span>CASE 03 · AUDIO COMMERCIAL</span><h2>声场成真<em>鲜活声场，极致沉浸。</em></h2><p>把“听见”转化为“看见”：音乐化作彩色手绘角色与轨迹，从白色产品棚进入真实客厅，建立产品、人物与视效之间的完整叙事。</p></div>
-            <div id="video-earphone" className="cat-film ear-film"><video controls playsInline preload="metadata" poster="/ai-ads/earphone/product.webp"><source src="/ai-ads/earphone/earphone.mp4" type="video/mp4" /></video><div><span>63.25 SEC · 16:9 · IMMERSIVE AUDIO</span><h3>从一副耳机，进入一整个鲜活世界。</h3></div></div>
+            <div id="video-earphone" className="cat-film ear-film"><video controls playsInline preload="metadata" poster="./ai-ads/earphone/product.webp"><source src="./ai-ads/earphone/earphone.mp4" type="video/mp4" /></video><div><span>63.25 SEC · 16:9 · IMMERSIVE AUDIO</span><h3>从一副耳机，进入一整个鲜活世界。</h3></div></div>
             <div className="cat-entry-grid">
               <button className="cat-entry ear-asset-entry" onClick={() => setEarAssetsOpen(true)}><span>01 / ASSET LIBRARY</span><h3>进入分类资产</h3><p>产品、人物、场景与音乐手绘视效</p><b>OPEN ASSETS ↗</b></button>
               <button className="cat-entry ear-document-entry" onClick={() => setEarScriptOpen(true)}><span>02 / FULL DOCUMENT</span><h3>打开完整剧本</h3><p>广告剧本、拍摄脚本与 LibTV 提示词全文</p><b>READ SCRIPT ↗</b></button>
@@ -653,17 +653,17 @@ export default function Home() {
 
           {earAssetsOpen && <div className="script-document ear-assets-document" role="dialog" aria-modal="true" aria-label="耳机宣传分类资产" onClick={() => setEarAssetsOpen(false)}><button className="script-close" onClick={() => setEarAssetsOpen(false)}>关闭资产 ×</button><div className="cat-assets-page ear-assets-page" onClick={e=>e.stopPropagation()}>
             <header><span>WHITE TWS EARBUDS · ASSET LIBRARY</span><h2>项目资产<em>分类归档。</em></h2></header>
-            <section><div className="cat-asset-title"><span>01</span><div><h3>产品资产</h3><b>PRODUCT REFERENCE</b></div></div><img src="/ai-ads/earphone/product.webp" alt="白色 TWS 耳机产品资产卡" /></section>
-            <section><div className="cat-asset-title"><span>02</span><div><h3>人物资产</h3><b>CHARACTER REFERENCES</b></div></div><div className="cat-character-grid"><figure><img src="/ai-ads/earphone/male.webp" alt="年轻男主人物资产卡" /><figcaption>P01 · 年轻男主三视图与表情参考</figcaption></figure><figure><img src="/ai-ads/earphone/female.webp" alt="年轻女室友人物资产卡" /><figcaption>P02 · 年轻女室友三视图与表情参考</figcaption></figure></div></section>
-            <section><div className="cat-asset-title"><span>03</span><div><h3>场景资产</h3><b>SCENE REFERENCES</b></div></div><div className="cat-scene-grid ear-scene-grid"><figure><img src="/ai-ads/earphone/scene-studio.webp" alt="白色产品棚拍场景" /><figcaption>S01 · 白色产品棚拍空间</figcaption></figure><figure><img src="/ai-ads/earphone/scene-living.webp" alt="明亮开放式客厅场景" /><figcaption>S02 · 明亮开放式客厅</figcaption></figure></div></section>
-            <section><div className="cat-asset-title"><span>04</span><div><h3>视效资产</h3><b>VISUAL EFFECTS</b></div></div><img className="ear-vfx" src="/ai-ads/earphone/vfx.webp" alt="音乐手绘涂鸦视效资产卡" /></section>
+            <section><div className="cat-asset-title"><span>01</span><div><h3>产品资产</h3><b>PRODUCT REFERENCE</b></div></div><img src="./ai-ads/earphone/product.webp" alt="白色 TWS 耳机产品资产卡" /></section>
+            <section><div className="cat-asset-title"><span>02</span><div><h3>人物资产</h3><b>CHARACTER REFERENCES</b></div></div><div className="cat-character-grid"><figure><img src="./ai-ads/earphone/male.webp" alt="年轻男主人物资产卡" /><figcaption>P01 · 年轻男主三视图与表情参考</figcaption></figure><figure><img src="./ai-ads/earphone/female.webp" alt="年轻女室友人物资产卡" /><figcaption>P02 · 年轻女室友三视图与表情参考</figcaption></figure></div></section>
+            <section><div className="cat-asset-title"><span>03</span><div><h3>场景资产</h3><b>SCENE REFERENCES</b></div></div><div className="cat-scene-grid ear-scene-grid"><figure><img src="./ai-ads/earphone/scene-studio.webp" alt="白色产品棚拍场景" /><figcaption>S01 · 白色产品棚拍空间</figcaption></figure><figure><img src="./ai-ads/earphone/scene-living.webp" alt="明亮开放式客厅场景" /><figcaption>S02 · 明亮开放式客厅</figcaption></figure></div></section>
+            <section><div className="cat-asset-title"><span>04</span><div><h3>视效资产</h3><b>VISUAL EFFECTS</b></div></div><img className="ear-vfx" src="./ai-ads/earphone/vfx.webp" alt="音乐手绘涂鸦视效资产卡" /></section>
           </div></div>}
 
           {earScriptOpen && <div className="script-document ear-script-document" role="dialog" aria-modal="true" aria-label="耳机宣传完整剧本文档" onClick={() => setEarScriptOpen(false)}><button className="script-close" onClick={() => setEarScriptOpen(false)}>关闭文档 ×</button><article className="cat-script-page ear-script-page" onClick={e=>e.stopPropagation()}><header><span>LIBTV IMMERSIVE AUDIO COMMERCIAL PRODUCTION DOCUMENT</span><h2>声场成真<em>鲜活声场，极致沉浸。</em></h2><p>剧本｜拍摄脚本｜资产卡｜LibTV 提示词</p></header><div className="cat-script-content ear-script-content">{earphoneScript.map((line,index)=>{const heading=/^(项目概览|核心创意|叙事结构|完整|第一|第二|第三|第四|第五|第六|镜头|场景|人物|产品|视效|声音|全局|生成|剪辑|交付|附录)/.test(line);return heading?<h3 key={index}>{line}</h3>:<p key={index}>{line}</p>})}</div></article></div>}
 
           <div className="cat-case interactive-case">
             <div className="cat-case-head interactive-case-head"><span>CASE 04 · INTERACTIVE COMMERCIAL</span><h2>互动影像<em>让画面回应每一次参与。</em></h2><p>以互动节奏和动态视觉建立观看参与感，在简洁的影像结构中呈现更直接、更具记忆点的广告表达。</p></div>
-            <div className="cat-film interactive-film"><video controls playsInline preload="metadata"><source src="/ai-ads/interactive/interactive.mp4" type="video/mp4" /></video><div><span>AI COMMERCIAL · INTERACTIVE MOTION</span><h3>互动 · AI Creative Film</h3></div></div>
+            <div className="cat-film interactive-film"><video controls playsInline preload="metadata"><source src="./ai-ads/interactive/interactive.mp4" type="video/mp4" /></video><div><span>AI COMMERCIAL · INTERACTIVE MOTION</span><h3>互动 · AI Creative Film</h3></div></div>
           </div>
         </section>
 
@@ -677,13 +677,13 @@ export default function Home() {
           {dramaOpen && <button className="drama-master-close" onClick={() => { setDramaOpen(false); setVideoHubOpen(true); }}>← 返回 AI视频</button>}
           <header className="showcase-title drama-showcase-title"><span>06 / SELECTED WORKS</span><h2>AI短剧</h2><p>AI NARRATIVE SERIES</p></header>
           <div className="drama-heading"><p className="section-kicker">AI NARRATIVE SERIES · CASE 01</p><h2>最后一颗糖<em>有些等待，从未过期。</em></h2><p>一颗被珍藏多年的水果糖，连接童年赠糖、成年离乡、电话牵挂与返乡重逢。以现实主义影像呈现跨越时间的亲情守候。</p></div>
-          <div id="video-candy" className="drama-film"><video controls playsInline preload="metadata" poster="/ai-drama/last-candy/candy.webp"><source src="/ai-drama/last-candy/last-candy.mp4" type="video/mp4" /></video><div><span>03:30 · 16:9 · FAMILY DRAMA</span><h3>一颗糖，等一个人回家。</h3></div></div>
+          <div id="video-candy" className="drama-film"><video controls playsInline preload="metadata" poster="./ai-drama/last-candy/candy.webp"><source src="./ai-drama/last-candy/last-candy.mp4" type="video/mp4" /></video><div><span>03:30 · 16:9 · FAMILY DRAMA</span><h3>一颗糖，等一个人回家。</h3></div></div>
           <div className="cat-entry-grid drama-entry-grid"><button className="cat-entry drama-asset-entry" onClick={() => setCandyAssetsOpen(true)}><span>01 / ASSET LIBRARY</span><h3>进入分类资产</h3><p>人物、场景与核心道具交互归档</p><b>OPEN ASSETS ↗</b></button><button className="cat-entry drama-document-entry" onClick={() => setCandyScriptOpen(true)}><span>02 / FULL DOCUMENT</span><h3>打开完整剧本</h3><p>完整剧本、拍摄分镜与生成提示词</p><b>READ SCRIPT ↗</b></button></div>
 
           {candyAssetsOpen && <div className="script-document" role="dialog" aria-modal="true" aria-label="最后一颗糖分类资产" onClick={() => setCandyAssetsOpen(false)}><button className="script-close" onClick={() => setCandyAssetsOpen(false)}>关闭资产 ×</button><div className="candy-assets-page" onClick={e=>e.stopPropagation()}><header><span>THE LAST CANDY · ASSET LIBRARY</span><h2>短剧资产<em>分类浏览。</em></h2><p>点击分类按钮切换人物、场景与道具资产。</p></header><nav className="asset-tabs" aria-label="资产分类"><button className={candyAssetCategory==="characters"?"active":""} onClick={()=>setCandyAssetCategory("characters")}>人物资产 · 05</button><button className={candyAssetCategory==="scenes"?"active":""} onClick={()=>setCandyAssetCategory("scenes")}>场景资产 · 05</button><button className={candyAssetCategory==="props"?"active":""} onClick={()=>setCandyAssetCategory("props")}>道具资产 · 02</button></nav>
-            {candyAssetCategory==="characters" && <section><div className="candy-asset-title"><span>01</span><div><h3>人物资产</h3><b>CHARACTER REFERENCES</b></div></div><div className="candy-grid">{[["adult-granddaughter","成年孙女"],["young-granddaughter","童年孙女"],["grandmother","奶奶"],["grandfather","爷爷"],["leader","领导"]].map(([file,title])=><figure key={file}><img src={`/ai-drama/last-candy/${file}.webp`} alt={`${title}人物资产卡`} /><figcaption>{title} · 三视图与表情参考</figcaption></figure>)}</div></section>}
-            {candyAssetCategory==="scenes" && <section><div className="candy-asset-title"><span>02</span><div><h3>场景资产</h3><b>SCENE REFERENCES</b></div></div><div className="candy-grid candy-scene-grid">{[["scene-office","深夜办公室"],["scene-train","高铁车厢"],["scene-station","高铁站"],["scene-street","老街黄昏"],["scene-home","乡村老宅"]].map(([file,title])=><figure key={file}><img src={`/ai-drama/last-candy/${file}.webp`} alt={`${title}场景资产`} /><figcaption>{title} · 空间与光线参考</figcaption></figure>)}</div></section>}
-            {candyAssetCategory==="props" && <section><div className="candy-asset-title"><span>03</span><div><h3>道具资产</h3><b>PROP REFERENCES</b></div></div><div className="candy-grid"><figure><img src="/ai-drama/last-candy/candy.webp" alt="最后一颗糖核心道具资产" /><figcaption>核心道具 · 红色水果糖多角度参考</figcaption></figure><figure><img src="/ai-drama/last-candy/props.webp" alt="短剧综合道具资产" /><figcaption>综合道具 · 背包、行李箱、手机、电脑与木凳</figcaption></figure></div></section>}
+            {candyAssetCategory==="characters" && <section><div className="candy-asset-title"><span>01</span><div><h3>人物资产</h3><b>CHARACTER REFERENCES</b></div></div><div className="candy-grid">{[["adult-granddaughter","成年孙女"],["young-granddaughter","童年孙女"],["grandmother","奶奶"],["grandfather","爷爷"],["leader","领导"]].map(([file,title])=><figure key={file}><img src={`./ai-drama/last-candy/${file}.webp`} alt={`${title}人物资产卡`} /><figcaption>{title} · 三视图与表情参考</figcaption></figure>)}</div></section>}
+            {candyAssetCategory==="scenes" && <section><div className="candy-asset-title"><span>02</span><div><h3>场景资产</h3><b>SCENE REFERENCES</b></div></div><div className="candy-grid candy-scene-grid">{[["scene-office","深夜办公室"],["scene-train","高铁车厢"],["scene-station","高铁站"],["scene-street","老街黄昏"],["scene-home","乡村老宅"]].map(([file,title])=><figure key={file}><img src={`./ai-drama/last-candy/${file}.webp`} alt={`${title}场景资产`} /><figcaption>{title} · 空间与光线参考</figcaption></figure>)}</div></section>}
+            {candyAssetCategory==="props" && <section><div className="candy-asset-title"><span>03</span><div><h3>道具资产</h3><b>PROP REFERENCES</b></div></div><div className="candy-grid"><figure><img src="./ai-drama/last-candy/candy.webp" alt="最后一颗糖核心道具资产" /><figcaption>核心道具 · 红色水果糖多角度参考</figcaption></figure><figure><img src="./ai-drama/last-candy/props.webp" alt="短剧综合道具资产" /><figcaption>综合道具 · 背包、行李箱、手机、电脑与木凳</figcaption></figure></div></section>}
           </div></div>}
 
           {candyScriptOpen && <div className="script-document" role="dialog" aria-modal="true" aria-label="最后一颗糖完整剧本文档" onClick={() => setCandyScriptOpen(false)}><button className="script-close" onClick={() => setCandyScriptOpen(false)}>关闭文档 ×</button><article className="candy-script-page" onClick={e=>e.stopPropagation()}><header><span>LIBTV NARRATIVE PRODUCTION DOCUMENT</span><h2>最后一颗糖<em>完整剧本与拍摄脚本。</em></h2><p>原文完整导入 · 共 {lastCandyScript.length} 个内容段落</p></header><div className="candy-script-content">{lastCandyScript.map((line,index)=>{const heading=/^(规格|项目|故事|人物|场景|道具|完整|剧本|分镜|镜头|第一|第二|第三|第四|第五|第六|第七|第八|全局|生成|声音|剪辑|交付|附录)/.test(line);return heading?<h3 key={index}>{line}</h3>:<p key={index}>{line}</p>})}</div></article></div>}
@@ -691,16 +691,16 @@ export default function Home() {
           <div className="shanjia-case white-wolf-case">
             <div className="drama-heading white-wolf-heading"><p className="section-kicker">AI NARRATIVE SERIES · CASE 02</p><h2>白狼女王<em>黑血归来，王冠由选择铸成。</em></h2><p>一部围绕血脉、自由与救赎展开的暗黑奇幻竖屏短剧。艾拉从封魂水晶中看见自己的白狼真身，穿越雪原前往吸血鬼城，并揭开三族共同掩埋的黑血旧约。</p></div>
             <div id="video-white-wolf" className="white-wolf-films">
-              <div className="drama-film white-wolf-film"><video controls playsInline preload="metadata" poster="/ai-drama/white-wolf/场景/01_阿尔德里克书房_黄昏.png"><source src="/ai-drama/white-wolf/white-wolf-1.mp4" type="video/mp4" /></video><div><span>PART 01 · 9:16 · DARK FANTASY</span><h3>冰晶显影，白狼血脉第一次苏醒。</h3></div></div>
-              <div className="drama-film white-wolf-film"><video controls playsInline preload="metadata" poster="/ai-drama/white-wolf/场景/04_吸血鬼城门_血月.png"><source src="/ai-drama/white-wolf/white-wolf-2.mp4" type="video/mp4" /></video><div><span>PART 02 · 9:16 · DARK FANTASY</span><h3>穿过雪岭，黑血在王城之下归来。</h3></div></div>
+              <div className="drama-film white-wolf-film"><video controls playsInline preload="metadata" poster="./ai-drama/white-wolf/场景/01_阿尔德里克书房_黄昏.png"><source src="./ai-drama/white-wolf/white-wolf-1.mp4" type="video/mp4" /></video><div><span>PART 01 · 9:16 · DARK FANTASY</span><h3>冰晶显影，白狼血脉第一次苏醒。</h3></div></div>
+              <div className="drama-film white-wolf-film"><video controls playsInline preload="metadata" poster="./ai-drama/white-wolf/场景/04_吸血鬼城门_血月.png"><source src="./ai-drama/white-wolf/white-wolf-2.mp4" type="video/mp4" /></video><div><span>PART 02 · 9:16 · DARK FANTASY</span><h3>穿过雪岭，黑血在王城之下归来。</h3></div></div>
             </div>
             <div className="cat-entry-grid drama-entry-grid"><button className="cat-entry white-wolf-asset-entry" onClick={() => setWhiteWolfAssetsOpen(true)}><span>01 / ASSET LIBRARY</span><h3>进入分类资产</h3><p>9 组人物、13 组场景与 10 组核心道具</p><b>OPEN ASSETS ↗</b></button><button className="cat-entry white-wolf-document-entry" onClick={() => setWhiteWolfScriptOpen(true)}><span>02 / FULL DOCUMENT</span><h3>打开制作文档</h3><p>60 分钟完整故事、19 场结构与 22 镜头脚本</p><b>READ DOCUMENT ↗</b></button></div>
           </div>
 
           {whiteWolfAssetsOpen && <div className="script-document white-wolf-assets-document" role="dialog" aria-modal="true" aria-label="白狼女王分类资产" onClick={() => setWhiteWolfAssetsOpen(false)}><button className="script-close" onClick={() => setWhiteWolfAssetsOpen(false)}>关闭资产 ×</button><div className="candy-assets-page white-wolf-assets-page" onClick={e=>e.stopPropagation()}><header><span>THE WHITE WOLF QUEEN · ASSET LIBRARY</span><h2>白狼女王<em>视觉资产档案。</em></h2><p>角色、世界场景与叙事道具均按连续性生产标准整理。</p></header><nav className="asset-tabs white-wolf-tabs" aria-label="白狼女王资产分类"><button className={whiteWolfAssetCategory==="characters"?"active":""} onClick={()=>setWhiteWolfAssetCategory("characters")}>人物资产 · 09</button><button className={whiteWolfAssetCategory==="scenes"?"active":""} onClick={()=>setWhiteWolfAssetCategory("scenes")}>场景资产 · 13</button><button className={whiteWolfAssetCategory==="props"?"active":""} onClick={()=>setWhiteWolfAssetCategory("props")}>道具资产 · 10</button></nav>
-            {whiteWolfAssetCategory==="characters" && <section><div className="candy-asset-title"><span>01</span><div><h3>人物资产</h3><b>CHARACTER REFERENCES</b></div></div><div className="candy-grid">{[["01_阿尔德里克_三视图表情版","阿尔德里克"],["02_卢锡安_三视图表情版","卢锡安"],["03_妮拉_三视图表情版","妮拉"],["04_露恩_三视图表情版","露恩"],["05_恩妮德_三视图表情版","恩妮德"],["06_玛拉_三视图表情版","玛拉"],["07_玛拉的女儿_三视图表情版","玛拉的女儿"],["08_感染老人_三视图表情版","感染老人"],["09_黑血实体_三视图形态版","黑血实体"]].map(([file,title])=><figure key={file}><img src={`/ai-drama/white-wolf/人物/${file}.png`} alt={`${title}人物资产卡`} /><figcaption>{title} · 三视图、表情与造型连续性</figcaption></figure>)}</div></section>}
-            {whiteWolfAssetCategory==="scenes" && <section><div className="candy-asset-title"><span>02</span><div><h3>场景资产</h3><b>SCENE REFERENCES</b></div></div><div className="candy-grid candy-scene-grid">{[["01_阿尔德里克书房_黄昏","阿尔德里克书房"],["02_黑血雪村_夜","黑血雪村"],["03_骨镜森林_夜","骨镜森林"],["04_吸血鬼城门_血月","吸血鬼城门"],["05_吸血鬼王座厅_夜","吸血鬼王座厅"],["06_血月假面舞厅_夜","血月假面舞厅"],["07_地下囚禁礼拜堂_夜","地下囚禁礼拜堂"],["08_被抹去的盟约档案馆","盟约档案馆"],["09_吸血鬼城上空北境裂隙","北境裂隙"],["10_废墟王座厅_黎明","废墟王座厅"],["11_吸血鬼城中央广场_白昼","中央广场"],["12_复苏中的无名村_清晨","复苏中的无名村"],["13_北境界碑_日落极光","北境界碑"]].map(([file,title])=><figure key={file}><img src={`/ai-drama/white-wolf/场景/${file}.png`} alt={`${title}场景资产`} /><figcaption>{title} · 空间、光线与气氛参考</figcaption></figure>)}</div></section>}
-            {whiteWolfAssetCategory==="props" && <section><div className="candy-asset-title"><span>03</span><div><h3>道具资产</h3><b>PROP REFERENCES</b></div></div><div className="candy-grid shanjia-prop-grid">{[["01_狼牙钥匙","狼牙钥匙"],["02_通往吸血鬼城的烧毁地图","烧毁地图"],["03_黑血瓶","黑血瓶"],["04_村庄木质名牌","村庄木质名牌"],["05_露恩的银色仪式匕首","银色仪式匕首"],["06_被抹去的三国盟约","三国盟约"],["07_灵魂水晶","灵魂水晶"],["08_治疗水晶碎片","治疗水晶碎片"],["09_白狼王族银冠","白狼王族银冠"],["10_王冠固定于剑柄_最终状态","王冠剑柄"]].map(([file,title])=><figure key={file}><img src={`/ai-drama/white-wolf/道具/${file}.png`} alt={`${title}道具资产`} /><figcaption>{title} · 叙事功能与形态参考</figcaption></figure>)}</div></section>}
+            {whiteWolfAssetCategory==="characters" && <section><div className="candy-asset-title"><span>01</span><div><h3>人物资产</h3><b>CHARACTER REFERENCES</b></div></div><div className="candy-grid">{[["01_阿尔德里克_三视图表情版","阿尔德里克"],["02_卢锡安_三视图表情版","卢锡安"],["03_妮拉_三视图表情版","妮拉"],["04_露恩_三视图表情版","露恩"],["05_恩妮德_三视图表情版","恩妮德"],["06_玛拉_三视图表情版","玛拉"],["07_玛拉的女儿_三视图表情版","玛拉的女儿"],["08_感染老人_三视图表情版","感染老人"],["09_黑血实体_三视图形态版","黑血实体"]].map(([file,title])=><figure key={file}><img src={`./ai-drama/white-wolf/人物/${file}.png`} alt={`${title}人物资产卡`} /><figcaption>{title} · 三视图、表情与造型连续性</figcaption></figure>)}</div></section>}
+            {whiteWolfAssetCategory==="scenes" && <section><div className="candy-asset-title"><span>02</span><div><h3>场景资产</h3><b>SCENE REFERENCES</b></div></div><div className="candy-grid candy-scene-grid">{[["01_阿尔德里克书房_黄昏","阿尔德里克书房"],["02_黑血雪村_夜","黑血雪村"],["03_骨镜森林_夜","骨镜森林"],["04_吸血鬼城门_血月","吸血鬼城门"],["05_吸血鬼王座厅_夜","吸血鬼王座厅"],["06_血月假面舞厅_夜","血月假面舞厅"],["07_地下囚禁礼拜堂_夜","地下囚禁礼拜堂"],["08_被抹去的盟约档案馆","盟约档案馆"],["09_吸血鬼城上空北境裂隙","北境裂隙"],["10_废墟王座厅_黎明","废墟王座厅"],["11_吸血鬼城中央广场_白昼","中央广场"],["12_复苏中的无名村_清晨","复苏中的无名村"],["13_北境界碑_日落极光","北境界碑"]].map(([file,title])=><figure key={file}><img src={`./ai-drama/white-wolf/场景/${file}.png`} alt={`${title}场景资产`} /><figcaption>{title} · 空间、光线与气氛参考</figcaption></figure>)}</div></section>}
+            {whiteWolfAssetCategory==="props" && <section><div className="candy-asset-title"><span>03</span><div><h3>道具资产</h3><b>PROP REFERENCES</b></div></div><div className="candy-grid shanjia-prop-grid">{[["01_狼牙钥匙","狼牙钥匙"],["02_通往吸血鬼城的烧毁地图","烧毁地图"],["03_黑血瓶","黑血瓶"],["04_村庄木质名牌","村庄木质名牌"],["05_露恩的银色仪式匕首","银色仪式匕首"],["06_被抹去的三国盟约","三国盟约"],["07_灵魂水晶","灵魂水晶"],["08_治疗水晶碎片","治疗水晶碎片"],["09_白狼王族银冠","白狼王族银冠"],["10_王冠固定于剑柄_最终状态","王冠剑柄"]].map(([file,title])=><figure key={file}><img src={`./ai-drama/white-wolf/道具/${file}.png`} alt={`${title}道具资产`} /><figcaption>{title} · 叙事功能与形态参考</figcaption></figure>)}</div></section>}
           </div></div>}
 
           {whiteWolfScriptOpen && <div className="script-document white-wolf-script-document" role="dialog" aria-modal="true" aria-label="白狼女王完整制作文档" onClick={() => setWhiteWolfScriptOpen(false)}><button className="script-close" onClick={() => setWhiteWolfScriptOpen(false)}>关闭文档 ×</button><article className="candy-script-page white-wolf-script-page" onClick={e=>e.stopPropagation()}><header><span>THE WHITE WOLF QUEEN · PRODUCTION DOCUMENT</span><h2>黑血归来<em>完整故事与制作设定。</em></h2><p>两段原片 · 60 分钟扩写 · 19 场叙事 · 22 镜头生成规范</p></header><div className="candy-script-content">{whiteWolfScript.map((line,index)=>{const heading=/^(《|项目定位|故事梗概|主要人物|十九场叙事结构|视觉规则|资产与制作)/.test(line);return heading?<h3 key={index}>{line}</h3>:<p key={index}>{line}</p>})}</div></article></div>}
@@ -708,16 +708,16 @@ export default function Home() {
           <div className="shanjia-case royal-physician-case">
             <div className="drama-heading royal-physician-heading"><p className="section-kicker">AI NARRATIVE SERIES · CASE 03</p><h2>医妃入宫<em>圣手逆命。</em></h2><p>以宫廷医术与命运逆袭为主线的竖屏 AI 短剧。双篇成片依照原始顺序呈现，完整保留连续剧情与人物关系。</p></div>
             <div id="video-royal-physician" className="white-wolf-films royal-physician-films">
-              <div className="drama-film royal-physician-film"><video controls playsInline preload="metadata" poster="/ai-drama/royal-physician/scenes/06.png"><source src="/ai-drama/royal-physician/royal-physician-2-web.mp4" type="video/mp4" /></video><div><span>PART 01 · 9:16 · PALACE DRAMA</span><h3>医妃入宫 · 圣手逆命（上篇）</h3></div></div>
-              <div className="drama-film royal-physician-film"><video controls playsInline preload="metadata" poster="/ai-drama/royal-physician/scenes/02.png"><source src="/ai-drama/royal-physician/royal-physician-1-web.mp4" type="video/mp4" /></video><div><span>PART 02 · 9:16 · PALACE DRAMA</span><h3>医妃入宫 · 圣手逆命（下篇）</h3></div></div>
+              <div className="drama-film royal-physician-film"><video controls playsInline preload="metadata" poster="./ai-drama/royal-physician/scenes/06.png"><source src="./ai-drama/royal-physician/royal-physician-2-web.mp4" type="video/mp4" /></video><div><span>PART 01 · 9:16 · PALACE DRAMA</span><h3>医妃入宫 · 圣手逆命（上篇）</h3></div></div>
+              <div className="drama-film royal-physician-film"><video controls playsInline preload="metadata" poster="./ai-drama/royal-physician/scenes/02.png"><source src="./ai-drama/royal-physician/royal-physician-1-web.mp4" type="video/mp4" /></video><div><span>PART 02 · 9:16 · PALACE DRAMA</span><h3>医妃入宫 · 圣手逆命（下篇）</h3></div></div>
             </div>
             <div className="cat-entry-grid drama-entry-grid"><button className="cat-entry royal-physician-asset-entry" onClick={() => setRoyalPhysicianAssetsOpen(true)}><span>01 / ASSET LIBRARY</span><h3>进入分类资产</h3><p>13 组人物、16 组场景与 23 组核心道具</p><b>OPEN ASSETS ↗</b></button><button className="cat-entry royal-physician-document-entry" onClick={() => setRoyalPhysicianScriptOpen(true)}><span>02 / FULL DOCUMENT</span><h3>打开制作文档</h3><p>完整文学剧本与 150 分钟拍摄脚本表格</p><b>READ DOCUMENT ↗</b></button></div>
           </div>
 
           {royalPhysicianAssetsOpen && <div className="script-document royal-physician-assets-document" role="dialog" aria-modal="true" aria-label="医妃入宫分类资产" onClick={() => setRoyalPhysicianAssetsOpen(false)}><button className="script-close" onClick={() => setRoyalPhysicianAssetsOpen(false)}>关闭资产 ×</button><div className="candy-assets-page royal-physician-assets-page" onClick={e=>e.stopPropagation()}><header><span>ROYAL PHYSICIAN · ASSET LIBRARY</span><h2>医妃入宫<em>视觉资产档案。</em></h2><p>人物造型、宫廷空间与关键叙事道具按制作类别完整收录。</p></header><nav className="asset-tabs royal-physician-tabs" aria-label="医妃入宫资产分类"><button className={royalPhysicianAssetCategory==="characters"?"active":""} onClick={()=>setRoyalPhysicianAssetCategory("characters")}>人物资产 · 13</button><button className={royalPhysicianAssetCategory==="scenes"?"active":""} onClick={()=>setRoyalPhysicianAssetCategory("scenes")}>场景资产 · 16</button><button className={royalPhysicianAssetCategory==="props"?"active":""} onClick={()=>setRoyalPhysicianAssetCategory("props")}>道具资产 · 23</button></nav>
-            {royalPhysicianAssetCategory==="characters" && <section><div className="candy-asset-title"><span>01</span><div><h3>人物资产</h3><b>CHARACTER REFERENCES</b></div></div><div className="candy-grid">{royalPhysicianCharacters.map((title,index)=><figure key={title}><img src={`/ai-drama/royal-physician/characters/${String(index+1).padStart(2,"0")}.png`} alt={`${title}人物资产卡`} /><figcaption>{title} · 三视图、妆造与细节参考</figcaption></figure>)}</div></section>}
-            {royalPhysicianAssetCategory==="scenes" && <section><div className="candy-asset-title"><span>02</span><div><h3>场景资产</h3><b>SCENE REFERENCES</b></div></div><div className="candy-grid candy-scene-grid">{royalPhysicianScenes.map((title,index)=><figure key={title}><img src={`/ai-drama/royal-physician/scenes/${String(index+1).padStart(2,"0")}.png`} alt={`${title}场景资产`} /><figcaption>{title} · 空间、光线与陈设参考</figcaption></figure>)}</div></section>}
-            {royalPhysicianAssetCategory==="props" && <section><div className="candy-asset-title"><span>03</span><div><h3>道具资产</h3><b>PROP REFERENCES</b></div></div><div className="candy-grid royal-physician-prop-grid">{royalPhysicianProps.map((title,index)=><figure key={title}><img src={`/ai-drama/royal-physician/props/${String(index+1).padStart(2,"0")}.png`} alt={`${title}道具资产`} /><figcaption>{title} · 形态、材质与叙事功能参考</figcaption></figure>)}</div></section>}
+            {royalPhysicianAssetCategory==="characters" && <section><div className="candy-asset-title"><span>01</span><div><h3>人物资产</h3><b>CHARACTER REFERENCES</b></div></div><div className="candy-grid">{royalPhysicianCharacters.map((title,index)=><figure key={title}><img src={`./ai-drama/royal-physician/characters/${String(index+1).padStart(2,"0")}.png`} alt={`${title}人物资产卡`} /><figcaption>{title} · 三视图、妆造与细节参考</figcaption></figure>)}</div></section>}
+            {royalPhysicianAssetCategory==="scenes" && <section><div className="candy-asset-title"><span>02</span><div><h3>场景资产</h3><b>SCENE REFERENCES</b></div></div><div className="candy-grid candy-scene-grid">{royalPhysicianScenes.map((title,index)=><figure key={title}><img src={`./ai-drama/royal-physician/scenes/${String(index+1).padStart(2,"0")}.png`} alt={`${title}场景资产`} /><figcaption>{title} · 空间、光线与陈设参考</figcaption></figure>)}</div></section>}
+            {royalPhysicianAssetCategory==="props" && <section><div className="candy-asset-title"><span>03</span><div><h3>道具资产</h3><b>PROP REFERENCES</b></div></div><div className="candy-grid royal-physician-prop-grid">{royalPhysicianProps.map((title,index)=><figure key={title}><img src={`./ai-drama/royal-physician/props/${String(index+1).padStart(2,"0")}.png`} alt={`${title}道具资产`} /><figcaption>{title} · 形态、材质与叙事功能参考</figcaption></figure>)}</div></section>}
           </div></div>}
 
           {royalPhysicianScriptOpen && <div className="script-document royal-physician-script-document" role="dialog" aria-modal="true" aria-label="医妃入宫完整剧本与拍摄脚本" onClick={() => setRoyalPhysicianScriptOpen(false)}><button className="script-close" onClick={() => setRoyalPhysicianScriptOpen(false)}>关闭文档 ×</button><article className="candy-script-page royal-physician-script-page" onClick={e=>e.stopPropagation()}><header><span>ROYAL PHYSICIAN · COMPLETE PRODUCTION DOCUMENTS</span><h2>医妃入宫<em>完整剧本与拍摄脚本。</em></h2><p>Word 剧本 {royalPhysicianDocuments.screenplay.length} 段 · Excel 拍摄脚本 {royalPhysicianDocuments.shootingScript.reduce((sum,sheet)=>sum+sheet.rows.length,0)} 行</p></header><div className="candy-script-content royal-physician-script-content"><h2 className="document-divider">01 · 完整文学剧本（DOCX）</h2>{royalPhysicianDocuments.screenplay.map((line,index)=>{const heading=/^(《|第[一二三四五六七八九十百0-9]+[集幕场]|主要人物|人物小传|故事梗概|项目)/.test(line);return heading?<h3 key={`doc-${index}`}>{line}</h3>:<p key={`doc-${index}`}>{line}</p>})}<h2 className="document-divider">02 · 150 分钟拍摄脚本（XLSX）</h2>{royalPhysicianDocuments.shootingScript.map((sheet,sheetIndex)=><section className="shooting-sheet" key={sheet.sheet}><h3>{String(sheetIndex+1).padStart(2,"0")} · {sheet.sheet}</h3><div className="shooting-table-wrap"><table><tbody>{sheet.rows.map((row,rowIndex)=><tr key={rowIndex}>{row.map((cell,cellIndex)=><td key={cellIndex}>{cell}</td>)}</tr>)}</tbody></table></div></section>)}</div></article></div>}
@@ -725,16 +725,16 @@ export default function Home() {
           <div className="shanjia-case mulan-case">
             <div className="drama-heading mulan-heading"><p className="section-kicker">AI NARRATIVE SERIES · CASE 04</p><h2>花木兰<em>替父从军，踏上自己的征途。</em></h2><p>以木兰替父从军的经典故事为叙事核心，通过双篇影像呈现身份选择、战场成长与家国担当。</p></div>
             <div id="video-mulan" className="white-wolf-films mulan-films">
-              <div className="drama-film mulan-film"><video controls playsInline preload="metadata"><source src="/ai-drama/mulan/mulan-1.mp4" type="video/mp4" /></video><div><span>PART 01 · AI NARRATIVE</span><h3>《花木兰》（上篇）</h3></div></div>
-              <div className="drama-film mulan-film"><video controls playsInline preload="metadata"><source src="/ai-drama/mulan/mulan-2.mp4" type="video/mp4" /></video><div><span>PART 02 · AI NARRATIVE</span><h3>《花木兰》（下篇）</h3></div></div>
+              <div className="drama-film mulan-film"><video controls playsInline preload="metadata"><source src="./ai-drama/mulan/mulan-1.mp4" type="video/mp4" /></video><div><span>PART 01 · AI NARRATIVE</span><h3>《花木兰》（上篇）</h3></div></div>
+              <div className="drama-film mulan-film"><video controls playsInline preload="metadata"><source src="./ai-drama/mulan/mulan-2.mp4" type="video/mp4" /></video><div><span>PART 02 · AI NARRATIVE</span><h3>《花木兰》（下篇）</h3></div></div>
             </div>
             <div className="cat-entry-grid drama-entry-grid mulan-entry-grid"><button className="cat-entry mulan-asset-entry" onClick={() => setMulanAssetsOpen(true)}><span>01 / ASSET LIBRARY</span><h3>进入分类资产</h3><p>5 组人物、3 组场景与 2 组道具资产</p><b>OPEN ASSETS ↗</b></button><button className="cat-entry mulan-document-entry" onClick={() => setMulanScriptOpen(true)}><span>02 / FULL DOCUMENT</span><h3>打开完整剧本</h3><p>完整版文学剧本与 28 分钟分镜拍摄执行脚本</p><b>READ DOCUMENT ↗</b></button></div>
           </div>
 
           {mulanAssetsOpen && <div className="script-document mulan-assets-document" role="dialog" aria-modal="true" aria-label="花木兰分类资产" onClick={() => setMulanAssetsOpen(false)}><button className="script-close" onClick={() => setMulanAssetsOpen(false)}>关闭资产 ×</button><div className="candy-assets-page mulan-assets-page" onClick={e=>e.stopPropagation()}><header><span>MULAN · ASSET LIBRARY</span><h2>花木兰<em>视觉资产档案。</em></h2><p>人物造型、乡村场景与关键陈设按制作类别整理。</p></header><nav className="asset-tabs mulan-tabs" aria-label="花木兰资产分类"><button className={mulanAssetCategory==="characters"?"active":""} onClick={()=>setMulanAssetCategory("characters")}>人物资产 · 05</button><button className={mulanAssetCategory==="scenes"?"active":""} onClick={()=>setMulanAssetCategory("scenes")}>场景资产 · 03</button><button className={mulanAssetCategory==="props"?"active":""} onClick={()=>setMulanAssetCategory("props")}>道具资产 · 02</button></nav>
-            {mulanAssetCategory==="characters" && <section><div className="candy-asset-title"><span>01</span><div><h3>人物资产</h3><b>CHARACTER REFERENCES</b></div></div><div className="candy-grid">{[["mulan","花木兰"],["father","花父"],["elder-villager","老村民"],["young-villager","年轻村民"],["recruiting-officer","征兵官"]].map(([file,title])=><figure key={file}><img src={`/ai-drama/mulan/assets/characters/${file}.png`} alt={`${title}人物资产卡`} /><figcaption>{title} · 三视图、造型与表情参考</figcaption></figure>)}</div></section>}
-            {mulanAssetCategory==="scenes" && <section><div className="candy-asset-title"><span>02</span><div><h3>场景资产</h3><b>SCENE REFERENCES</b></div></div><div className="candy-grid candy-scene-grid">{[["village-recruitment","村口征兵"],["hua-courtyard","花家院内"],["hua-home","花家宅院"]].map(([file,title])=><figure key={file}><img src={`/ai-drama/mulan/assets/scenes/${file}.png`} alt={`${title}场景资产`} /><figcaption>{title} · 空间、光线与环境陈设参考</figcaption></figure>)}</div></section>}
-            {mulanAssetCategory==="props" && <section><div className="candy-asset-title"><span>03</span><div><h3>道具资产</h3><b>PROP REFERENCES</b></div></div><div className="candy-grid mulan-prop-grid">{[["village-props-1","征兵告示与村落器物"],["village-props-2","花家生活陈设"]].map(([file,title])=><figure key={file}><img src={`/ai-drama/mulan/assets/props/${file}.png`} alt={`${title}道具资产`} /><figcaption>{title} · 形态、材质与使用参考</figcaption></figure>)}</div></section>}
+            {mulanAssetCategory==="characters" && <section><div className="candy-asset-title"><span>01</span><div><h3>人物资产</h3><b>CHARACTER REFERENCES</b></div></div><div className="candy-grid">{[["mulan","花木兰"],["father","花父"],["elder-villager","老村民"],["young-villager","年轻村民"],["recruiting-officer","征兵官"]].map(([file,title])=><figure key={file}><img src={`./ai-drama/mulan/assets/characters/${file}.png`} alt={`${title}人物资产卡`} /><figcaption>{title} · 三视图、造型与表情参考</figcaption></figure>)}</div></section>}
+            {mulanAssetCategory==="scenes" && <section><div className="candy-asset-title"><span>02</span><div><h3>场景资产</h3><b>SCENE REFERENCES</b></div></div><div className="candy-grid candy-scene-grid">{[["village-recruitment","村口征兵"],["hua-courtyard","花家院内"],["hua-home","花家宅院"]].map(([file,title])=><figure key={file}><img src={`./ai-drama/mulan/assets/scenes/${file}.png`} alt={`${title}场景资产`} /><figcaption>{title} · 空间、光线与环境陈设参考</figcaption></figure>)}</div></section>}
+            {mulanAssetCategory==="props" && <section><div className="candy-asset-title"><span>03</span><div><h3>道具资产</h3><b>PROP REFERENCES</b></div></div><div className="candy-grid mulan-prop-grid">{[["village-props-1","征兵告示与村落器物"],["village-props-2","花家生活陈设"]].map(([file,title])=><figure key={file}><img src={`./ai-drama/mulan/assets/props/${file}.png`} alt={`${title}道具资产`} /><figcaption>{title} · 形态、材质与使用参考</figcaption></figure>)}</div></section>}
           </div></div>}
 
           {mulanScriptOpen && <div className="script-document mulan-script-document" role="dialog" aria-modal="true" aria-label="花木兰完整剧本与拍摄脚本" onClick={() => setMulanScriptOpen(false)}><button className="script-close" onClick={() => setMulanScriptOpen(false)}>关闭文档 ×</button><article className="candy-script-page mulan-script-page" onClick={e=>e.stopPropagation()}><header><span>MULAN · COMPLETE PRODUCTION DOCUMENT</span><h2>花木兰<em>完整剧本与拍摄脚本。</em></h2><p>文学剧本 {mulanDocuments.screenplay.length} 段 · 分镜拍摄脚本 {mulanDocuments.shootingScript.length} 镜</p></header><div className="candy-script-content mulan-script-content"><h2 className="document-divider">01 · 完整文学剧本（DOCX）</h2>{mulanDocuments.screenplay.map((line,index)=>{const heading=/^(《|[一二三四五六]+、|第[一二三四五六七八九十]+场|全片完)/.test(line);return heading?<h3 key={`doc-${index}`}>{line}</h3>:<p key={`doc-${index}`}>{line}</p>})}<h2 className="document-divider">02 · 分镜与拍摄执行脚本</h2><section className="shooting-sheet"><div className="shooting-table-wrap"><table><tbody>{mulanDocuments.shootingScript.map((row,rowIndex)=><tr key={rowIndex}>{row.map((cell,cellIndex)=><td key={cellIndex}>{cell}</td>)}</tr>)}</tbody></table></div></section><h2 className="document-divider">03 · 制作建议</h2>{mulanDocuments.productionNotes.map((line,index)=>{const heading=/^(六、|[1-5]\. )/.test(line);return heading?<h3 key={`note-${index}`}>{line}</h3>:<p key={`note-${index}`}>{line}</p>})}</div></article></div>}
@@ -744,7 +744,7 @@ export default function Home() {
       {selectedPoster !== null && (
         <div className="lightbox" role="dialog" aria-modal="true" aria-label={posterWorks[selectedPoster].title} onClick={() => setSelectedPoster(null)}>
           <button className="lightbox-close" onClick={() => setSelectedPoster(null)} aria-label="关闭大图">关闭 ×</button>
-          <img src={`/posters/${posterWorks[selectedPoster].file}.webp`} alt={posterWorks[selectedPoster].title} onClick={(event) => event.stopPropagation()} />
+          <img src={`./posters/${posterWorks[selectedPoster].file}.webp`} alt={posterWorks[selectedPoster].title} onClick={(event) => event.stopPropagation()} />
           <p>{String(selectedPoster + 1).padStart(2, "0")} / 12 · {posterWorks[selectedPoster].title}</p>
         </div>
       )}
@@ -752,7 +752,7 @@ export default function Home() {
       {selectedType !== null && (
         <div className="lightbox type-lightbox" role="dialog" aria-modal="true" aria-label={typeWorks[selectedType].title} onClick={() => setSelectedType(null)}>
           <button className="lightbox-close" onClick={() => setSelectedType(null)} aria-label="关闭大图">关闭 ×</button>
-          <img src={`/typeworks/${typeWorks[selectedType].file}.webp`} alt={typeWorks[selectedType].title} onClick={(event) => event.stopPropagation()} />
+          <img src={`./typeworks/${typeWorks[selectedType].file}.webp`} alt={typeWorks[selectedType].title} onClick={(event) => event.stopPropagation()} />
           <p>{String(selectedType + 1).padStart(2, "0")} / 11 · {typeWorks[selectedType].title}</p>
         </div>
       )}
@@ -760,7 +760,7 @@ export default function Home() {
       {selectedBanner !== null && (
         <div className="lightbox banner-lightbox" role="dialog" aria-modal="true" aria-label={bannerWorks[selectedBanner].title} onClick={() => setSelectedBanner(null)}>
           <button className="lightbox-close" onClick={() => setSelectedBanner(null)} aria-label="关闭大图">关闭 ×</button>
-          <img src={`/banners/${bannerWorks[selectedBanner].file}.webp`} alt={bannerWorks[selectedBanner].title} onClick={(event) => event.stopPropagation()} />
+          <img src={`./banners/${bannerWorks[selectedBanner].file}.webp`} alt={bannerWorks[selectedBanner].title} onClick={(event) => event.stopPropagation()} />
           <p>{String(selectedBanner + 1).padStart(2, "0")} / 09 · {bannerWorks[selectedBanner].title}</p>
         </div>
       )}
@@ -768,7 +768,7 @@ export default function Home() {
       {selectedAdAsset !== null && (
         <div className="lightbox ad-lightbox" role="dialog" aria-modal="true" aria-label="OOTD 项目资产" onClick={() => setSelectedAdAsset(null)}>
           <button className="lightbox-close" onClick={() => setSelectedAdAsset(null)} aria-label="关闭大图">关闭 ×</button>
-          <img src={`/ai-ads/ootd/${selectedAdAsset}.webp`} alt="OOTD 项目资产大图" onClick={(event) => event.stopPropagation()} />
+          <img src={`./ai-ads/ootd/${selectedAdAsset}.webp`} alt="OOTD 项目资产大图" onClick={(event) => event.stopPropagation()} />
           <p>OOTD · AI COMMERCIAL ASSET</p>
         </div>
       )}
@@ -807,7 +807,7 @@ export default function Home() {
           </div>
           <div className="closing-wechat">
             <div><small>微信 / WECHAT</small><strong>扫码添加微信</strong><p>期待与你交流创意、影像与新的合作。</p></div>
-            <figure><img src="/wechat-qr.png" alt="韩东杰微信二维码" /><figcaption>SCAN TO CONNECT</figcaption></figure>
+            <figure><img src="./wechat-qr.png" alt="韩东杰微信二维码" /><figcaption>SCAN TO CONNECT</figcaption></figure>
           </div>
         </div>
         <div className="closing-mark">HDJ</div>
