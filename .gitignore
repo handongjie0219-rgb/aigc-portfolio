@@ -50,3 +50,5 @@ next-env.d.ts
 /public/ai-drama/shanjia/shanjia.mp4
 /public/ai-drama/royal-physician/royal-physician-1.mp4
 /public/ai-drama/royal-physician/royal-physician-2.mp4
+/.openai/site-deploy.tar.gz
+/AIGC作品集网站_完整打包_*/

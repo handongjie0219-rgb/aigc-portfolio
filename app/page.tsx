@@ -5,7 +5,6 @@ import { checklist, characters, filmBody, masterPrompt, negativePrompt, products
 import catfoodScript from "./catfood-script.json";
 import earphoneScript from "./earphone-script.json";
 import lastCandyScript from "./last-candy-script.json";
-import shanjiaScript from "./shanjia-script.json";
 import whiteWolfScript from "./white-wolf-script.json";
 import royalPhysicianDocuments from "./royal-physician-documents.json";
 import mulanDocuments from "./mulan-documents.json";
@@ -131,9 +130,6 @@ export default function Home() {
   const [candyAssetsOpen, setCandyAssetsOpen] = useState(false);
   const [candyScriptOpen, setCandyScriptOpen] = useState(false);
   const [candyAssetCategory, setCandyAssetCategory] = useState<"characters" | "scenes" | "props">("characters");
-  const [shanjiaAssetsOpen, setShanjiaAssetsOpen] = useState(false);
-  const [shanjiaScriptOpen, setShanjiaScriptOpen] = useState(false);
-  const [shanjiaAssetCategory, setShanjiaAssetCategory] = useState<"characters" | "scenes" | "props">("characters");
   const [whiteWolfAssetsOpen, setWhiteWolfAssetsOpen] = useState(false);
   const [whiteWolfScriptOpen, setWhiteWolfScriptOpen] = useState(false);
   const [whiteWolfAssetCategory, setWhiteWolfAssetCategory] = useState<"characters" | "scenes" | "props">("characters");
@@ -166,8 +162,6 @@ export default function Home() {
       if (earScriptOpen) return setEarScriptOpen(false);
       if (candyAssetsOpen) return setCandyAssetsOpen(false);
       if (candyScriptOpen) return setCandyScriptOpen(false);
-      if (shanjiaAssetsOpen) return setShanjiaAssetsOpen(false);
-      if (shanjiaScriptOpen) return setShanjiaScriptOpen(false);
       if (whiteWolfAssetsOpen) return setWhiteWolfAssetsOpen(false);
       if (whiteWolfScriptOpen) return setWhiteWolfScriptOpen(false);
       if (royalPhysicianAssetsOpen) return setRoyalPhysicianAssetsOpen(false);
@@ -184,10 +178,10 @@ export default function Home() {
       if (videoHubOpen) return setVideoHubOpen(false);
     };
     window.addEventListener("keydown", backOneLevel);
-    const locked = visualHubOpen || videoHubOpen || ipOpen || posterOpen || typeOpen || bannerOpen || adsOpen || dramaOpen || selectedPoster !== null || selectedType !== null || selectedBanner !== null || selectedAdAsset !== null || scriptOpen || ootdAssetsOpen || catAssetsOpen || catScriptOpen || earAssetsOpen || earScriptOpen || candyAssetsOpen || candyScriptOpen || shanjiaAssetsOpen || shanjiaScriptOpen || whiteWolfAssetsOpen || whiteWolfScriptOpen || royalPhysicianAssetsOpen || royalPhysicianScriptOpen || mulanAssetsOpen || mulanScriptOpen || leafyOpen || breezyOpen || moriOpen;
+    const locked = visualHubOpen || videoHubOpen || ipOpen || posterOpen || typeOpen || bannerOpen || adsOpen || dramaOpen || selectedPoster !== null || selectedType !== null || selectedBanner !== null || selectedAdAsset !== null || scriptOpen || ootdAssetsOpen || catAssetsOpen || catScriptOpen || earAssetsOpen || earScriptOpen || candyAssetsOpen || candyScriptOpen || whiteWolfAssetsOpen || whiteWolfScriptOpen || royalPhysicianAssetsOpen || royalPhysicianScriptOpen || mulanAssetsOpen || mulanScriptOpen || leafyOpen || breezyOpen || moriOpen;
     document.body.style.overflow = locked ? "hidden" : "";
     return () => { window.removeEventListener("keydown", backOneLevel); document.body.style.overflow = ""; };
-  }, [visualHubOpen, videoHubOpen, ipOpen, posterOpen, typeOpen, bannerOpen, adsOpen, dramaOpen, selectedPoster, selectedType, selectedBanner, selectedAdAsset, scriptOpen, ootdAssetsOpen, catAssetsOpen, catScriptOpen, earAssetsOpen, earScriptOpen, candyAssetsOpen, candyScriptOpen, shanjiaAssetsOpen, shanjiaScriptOpen, whiteWolfAssetsOpen, whiteWolfScriptOpen, royalPhysicianAssetsOpen, royalPhysicianScriptOpen, mulanAssetsOpen, mulanScriptOpen, leafyOpen, breezyOpen, moriOpen]);
+  }, [visualHubOpen, videoHubOpen, ipOpen, posterOpen, typeOpen, bannerOpen, adsOpen, dramaOpen, selectedPoster, selectedType, selectedBanner, selectedAdAsset, scriptOpen, ootdAssetsOpen, catAssetsOpen, catScriptOpen, earAssetsOpen, earScriptOpen, candyAssetsOpen, candyScriptOpen, whiteWolfAssetsOpen, whiteWolfScriptOpen, royalPhysicianAssetsOpen, royalPhysicianScriptOpen, mulanAssetsOpen, mulanScriptOpen, leafyOpen, breezyOpen, moriOpen]);
 
   const openVisualHub = () => {
     setVideoHubOpen(false); setAdsOpen(false); setDramaOpen(false);
@@ -677,7 +671,7 @@ export default function Home() {
           <button className="drama-master-entry" onClick={() => setDramaOpen(true)}>
             <span className="drama-master-index">06 / AI NARRATIVE SERIES</span>
             <div className="drama-master-frame" aria-hidden="true"><i /><i /><b>▶</b></div>
-            <div className="drama-master-copy"><small>STORY · CHARACTER · CINEMATIC WORLD</small><h2>AI短剧</h2><h3>五部故事，进入完整影像叙事宇宙。</h3><p>现实亲情、民俗惊悚、奇幻史诗、宫廷逆袭与巾帼传奇</p></div>
+            <div className="drama-master-copy"><small>STORY · CHARACTER · CINEMATIC WORLD</small><h2>AI短剧</h2><h3>四部故事，进入完整影像叙事宇宙。</h3><p>现实亲情、奇幻史诗、宫廷逆袭与巾帼传奇</p></div>
             <em>进入短剧作品集 ↗</em>
           </button>
           {dramaOpen && <button className="drama-master-close" onClick={() => { setDramaOpen(false); setVideoHubOpen(true); }}>← 返回 AI视频</button>}
@@ -694,22 +688,8 @@ export default function Home() {
 
           {candyScriptOpen && <div className="script-document" role="dialog" aria-modal="true" aria-label="最后一颗糖完整剧本文档" onClick={() => setCandyScriptOpen(false)}><button className="script-close" onClick={() => setCandyScriptOpen(false)}>关闭文档 ×</button><article className="candy-script-page" onClick={e=>e.stopPropagation()}><header><span>LIBTV NARRATIVE PRODUCTION DOCUMENT</span><h2>最后一颗糖<em>完整剧本与拍摄脚本。</em></h2><p>原文完整导入 · 共 {lastCandyScript.length} 个内容段落</p></header><div className="candy-script-content">{lastCandyScript.map((line,index)=>{const heading=/^(规格|项目|故事|人物|场景|道具|完整|剧本|分镜|镜头|第一|第二|第三|第四|第五|第六|第七|第八|全局|生成|声音|剪辑|交付|附录)/.test(line);return heading?<h3 key={index}>{line}</h3>:<p key={index}>{line}</p>})}</div></article></div>}
 
-          <div className="shanjia-case">
-            <div className="drama-heading shanjia-heading"><p className="section-kicker">AI NARRATIVE SERIES · CASE 02</p><h2>山嫁<em>红衣入山，旧俗见光。</em></h2><p>以深山祭仪、红嫁衣与傩面民俗建立悬疑氛围，在一次被迫返乡中揭开“山嫁”背后的控制、逃亡与反抗。</p></div>
-            <div className="drama-film shanjia-film"><video controls playsInline preload="metadata" poster="/ai-drama/shanjia/scene-1.webp"><source src="/ai-drama/shanjia/shanjia-web.mp4" type="video/mp4" /></video><div><span>16:9 · FOLK HORROR · AI DRAMA</span><h3>一场嫁给山的仪式，一次终结旧俗的逃亡。</h3></div></div>
-            <div className="cat-entry-grid drama-entry-grid"><button className="cat-entry shanjia-asset-entry" onClick={() => setShanjiaAssetsOpen(true)}><span>01 / ASSET LIBRARY</span><h3>进入分类资产</h3><p>人物、场景与仪式道具交互归档</p><b>OPEN ASSETS ↗</b></button><button className="cat-entry shanjia-document-entry" onClick={() => setShanjiaScriptOpen(true)}><span>02 / FULL SCRIPT</span><h3>打开完整剧本</h3><p>完整文学剧本与故事章节</p><b>READ SCRIPT ↗</b></button></div>
-          </div>
-
-          {shanjiaAssetsOpen && <div className="script-document shanjia-assets-document" role="dialog" aria-modal="true" aria-label="山嫁分类资产" onClick={() => setShanjiaAssetsOpen(false)}><button className="script-close" onClick={() => setShanjiaAssetsOpen(false)}>关闭资产 ×</button><div className="candy-assets-page shanjia-assets-page" onClick={e=>e.stopPropagation()}><header><span>SHAN JIA · ASSET LIBRARY</span><h2>山嫁资产<em>分类浏览。</em></h2><p>点击分类按钮切换人物、场景与道具资产。</p></header><nav className="asset-tabs shanjia-tabs" aria-label="山嫁资产分类"><button className={shanjiaAssetCategory==="characters"?"active":""} onClick={()=>setShanjiaAssetCategory("characters")}>人物资产 · 09</button><button className={shanjiaAssetCategory==="scenes"?"active":""} onClick={()=>setShanjiaAssetCategory("scenes")}>场景资产 · 06</button><button className={shanjiaAssetCategory==="props"?"active":""} onClick={()=>setShanjiaAssetCategory("props")}>道具资产 · 08</button></nav>
-            {shanjiaAssetCategory==="characters" && <section><div className="candy-asset-title"><span>01</span><div><h3>人物资产</h3><b>CHARACTER REFERENCES</b></div></div><div className="candy-grid">{[["character-villager","追捕村民"],["character-priest","傩面祭司"],["character-old-woman","祭仪老妇"],["character-rescuer","崖边救援男子"],["character-bride","红衣新娘"],["character-plain-woman","门后素衣女子"],["character-mountain-god","山神爷"],["character-souna","面具唢呐手"],["character-hunter","持弩追捕头领"]].map(([file,title])=><figure key={file}><img src={`/ai-drama/shanjia/${file}.webp`} alt={`${title}人物资产卡`} /><figcaption>{title} · 三视图、表情与造型细节</figcaption></figure>)}</div></section>}
-            {shanjiaAssetCategory==="scenes" && <section><div className="candy-asset-title"><span>02</span><div><h3>场景资产</h3><b>SCENE REFERENCES</b></div></div><div className="candy-grid candy-scene-grid">{[[1,"祭祀广场"],[2,"月夜灯笼山路"],[3,"雨夜山神庙"],[4,"红烛婚房"],[5,"山洞祭道"],[6,"雾中村寨"]].map(([file,title])=><figure key={file}><img src={`/ai-drama/shanjia/scene-${file}.webp`} alt={`${title}场景资产`} /><figcaption>{title} · 空间、光线与氛围参考</figcaption></figure>)}</div></section>}
-            {shanjiaAssetCategory==="props" && <section><div className="candy-asset-title"><span>03</span><div><h3>道具资产</h3><b>PROP REFERENCES</b></div></div><div className="candy-grid shanjia-prop-grid">{[["prop-lantern","红灯笼"],["prop-crossbow","木制弩箭"],["prop-drum","祭祀大鼓"],["prop-candle","红色蜡烛"],["prop-mask","傩面面具"],["prop-staff","铜铃手杖"],["prop-souna","红花唢呐"],["prop-pipe","山神烟袋"]].map(([file,title])=><figure key={file}><img src={`/ai-drama/shanjia/${file}.webp`} alt={`${title}道具资产`} /><figcaption>{title} · 核心仪式道具参考</figcaption></figure>)}</div></section>}
-          </div></div>}
-
-          {shanjiaScriptOpen && <div className="script-document shanjia-script-document" role="dialog" aria-modal="true" aria-label="山嫁完整剧本" onClick={() => setShanjiaScriptOpen(false)}><button className="script-close" onClick={() => setShanjiaScriptOpen(false)}>关闭剧本 ×</button><article className="candy-script-page shanjia-script-page" onClick={e=>e.stopPropagation()}><header><span>SHAN JIA · COMPLETE SCREENPLAY</span><h2>山嫁<em>完整文学剧本。</em></h2><p>共收录 {shanjiaScript.screenplay.length} 段剧本内容</p></header><div className="candy-script-content shanjia-script-content"><h2 className="document-divider">完整文学剧本</h2>{shanjiaScript.screenplay.map((line,index)=>{const heading=/^(《山嫁》|主要人物|第一幕|第二幕|第三幕|第四幕|第五幕|第六幕|第七幕|第八幕|尾声|场\d+)/.test(line);return heading?<h3 key={`doc-${index}`}>{line}</h3>:<p key={`doc-${index}`}>{line}</p>})}</div></article></div>}
-
           <div className="shanjia-case white-wolf-case">
-            <div className="drama-heading white-wolf-heading"><p className="section-kicker">AI NARRATIVE SERIES · CASE 03</p><h2>白狼女王<em>黑血归来，王冠由选择铸成。</em></h2><p>一部围绕血脉、自由与救赎展开的暗黑奇幻竖屏短剧。艾拉从封魂水晶中看见自己的白狼真身，穿越雪原前往吸血鬼城，并揭开三族共同掩埋的黑血旧约。</p></div>
+            <div className="drama-heading white-wolf-heading"><p className="section-kicker">AI NARRATIVE SERIES · CASE 02</p><h2>白狼女王<em>黑血归来，王冠由选择铸成。</em></h2><p>一部围绕血脉、自由与救赎展开的暗黑奇幻竖屏短剧。艾拉从封魂水晶中看见自己的白狼真身，穿越雪原前往吸血鬼城，并揭开三族共同掩埋的黑血旧约。</p></div>
             <div id="video-white-wolf" className="white-wolf-films">
               <div className="drama-film white-wolf-film"><video controls playsInline preload="metadata" poster="/ai-drama/white-wolf/场景/01_阿尔德里克书房_黄昏.png"><source src="/ai-drama/white-wolf/white-wolf-1.mp4" type="video/mp4" /></video><div><span>PART 01 · 9:16 · DARK FANTASY</span><h3>冰晶显影，白狼血脉第一次苏醒。</h3></div></div>
               <div className="drama-film white-wolf-film"><video controls playsInline preload="metadata" poster="/ai-drama/white-wolf/场景/04_吸血鬼城门_血月.png"><source src="/ai-drama/white-wolf/white-wolf-2.mp4" type="video/mp4" /></video><div><span>PART 02 · 9:16 · DARK FANTASY</span><h3>穿过雪岭，黑血在王城之下归来。</h3></div></div>
@@ -726,7 +706,7 @@ export default function Home() {
           {whiteWolfScriptOpen && <div className="script-document white-wolf-script-document" role="dialog" aria-modal="true" aria-label="白狼女王完整制作文档" onClick={() => setWhiteWolfScriptOpen(false)}><button className="script-close" onClick={() => setWhiteWolfScriptOpen(false)}>关闭文档 ×</button><article className="candy-script-page white-wolf-script-page" onClick={e=>e.stopPropagation()}><header><span>THE WHITE WOLF QUEEN · PRODUCTION DOCUMENT</span><h2>黑血归来<em>完整故事与制作设定。</em></h2><p>两段原片 · 60 分钟扩写 · 19 场叙事 · 22 镜头生成规范</p></header><div className="candy-script-content">{whiteWolfScript.map((line,index)=>{const heading=/^(《|项目定位|故事梗概|主要人物|十九场叙事结构|视觉规则|资产与制作)/.test(line);return heading?<h3 key={index}>{line}</h3>:<p key={index}>{line}</p>})}</div></article></div>}
 
           <div className="shanjia-case royal-physician-case">
-            <div className="drama-heading royal-physician-heading"><p className="section-kicker">AI NARRATIVE SERIES · CASE 04</p><h2>医妃入宫<em>圣手逆命。</em></h2><p>以宫廷医术与命运逆袭为主线的竖屏 AI 短剧。双篇成片依照原始顺序呈现，完整保留连续剧情与人物关系。</p></div>
+            <div className="drama-heading royal-physician-heading"><p className="section-kicker">AI NARRATIVE SERIES · CASE 03</p><h2>医妃入宫<em>圣手逆命。</em></h2><p>以宫廷医术与命运逆袭为主线的竖屏 AI 短剧。双篇成片依照原始顺序呈现，完整保留连续剧情与人物关系。</p></div>
             <div id="video-royal-physician" className="white-wolf-films royal-physician-films">
               <div className="drama-film royal-physician-film"><video controls playsInline preload="metadata" poster="/ai-drama/royal-physician/scenes/06.png"><source src="/ai-drama/royal-physician/royal-physician-2-web.mp4" type="video/mp4" /></video><div><span>PART 01 · 9:16 · PALACE DRAMA</span><h3>医妃入宫 · 圣手逆命（上篇）</h3></div></div>
               <div className="drama-film royal-physician-film"><video controls playsInline preload="metadata" poster="/ai-drama/royal-physician/scenes/02.png"><source src="/ai-drama/royal-physician/royal-physician-1-web.mp4" type="video/mp4" /></video><div><span>PART 02 · 9:16 · PALACE DRAMA</span><h3>医妃入宫 · 圣手逆命（下篇）</h3></div></div>
@@ -743,7 +723,7 @@ export default function Home() {
           {royalPhysicianScriptOpen && <div className="script-document royal-physician-script-document" role="dialog" aria-modal="true" aria-label="医妃入宫完整剧本与拍摄脚本" onClick={() => setRoyalPhysicianScriptOpen(false)}><button className="script-close" onClick={() => setRoyalPhysicianScriptOpen(false)}>关闭文档 ×</button><article className="candy-script-page royal-physician-script-page" onClick={e=>e.stopPropagation()}><header><span>ROYAL PHYSICIAN · COMPLETE PRODUCTION DOCUMENTS</span><h2>医妃入宫<em>完整剧本与拍摄脚本。</em></h2><p>Word 剧本 {royalPhysicianDocuments.screenplay.length} 段 · Excel 拍摄脚本 {royalPhysicianDocuments.shootingScript.reduce((sum,sheet)=>sum+sheet.rows.length,0)} 行</p></header><div className="candy-script-content royal-physician-script-content"><h2 className="document-divider">01 · 完整文学剧本（DOCX）</h2>{royalPhysicianDocuments.screenplay.map((line,index)=>{const heading=/^(《|第[一二三四五六七八九十百0-9]+[集幕场]|主要人物|人物小传|故事梗概|项目)/.test(line);return heading?<h3 key={`doc-${index}`}>{line}</h3>:<p key={`doc-${index}`}>{line}</p>})}<h2 className="document-divider">02 · 150 分钟拍摄脚本（XLSX）</h2>{royalPhysicianDocuments.shootingScript.map((sheet,sheetIndex)=><section className="shooting-sheet" key={sheet.sheet}><h3>{String(sheetIndex+1).padStart(2,"0")} · {sheet.sheet}</h3><div className="shooting-table-wrap"><table><tbody>{sheet.rows.map((row,rowIndex)=><tr key={rowIndex}>{row.map((cell,cellIndex)=><td key={cellIndex}>{cell}</td>)}</tr>)}</tbody></table></div></section>)}</div></article></div>}
 
           <div className="shanjia-case mulan-case">
-            <div className="drama-heading mulan-heading"><p className="section-kicker">AI NARRATIVE SERIES · CASE 05</p><h2>花木兰<em>替父从军，踏上自己的征途。</em></h2><p>以木兰替父从军的经典故事为叙事核心，通过双篇影像呈现身份选择、战场成长与家国担当。</p></div>
+            <div className="drama-heading mulan-heading"><p className="section-kicker">AI NARRATIVE SERIES · CASE 04</p><h2>花木兰<em>替父从军，踏上自己的征途。</em></h2><p>以木兰替父从军的经典故事为叙事核心，通过双篇影像呈现身份选择、战场成长与家国担当。</p></div>
             <div id="video-mulan" className="white-wolf-films mulan-films">
               <div className="drama-film mulan-film"><video controls playsInline preload="metadata"><source src="/ai-drama/mulan/mulan-1.mp4" type="video/mp4" /></video><div><span>PART 01 · AI NARRATIVE</span><h3>《花木兰》（上篇）</h3></div></div>
               <div className="drama-film mulan-film"><video controls playsInline preload="metadata"><source src="/ai-drama/mulan/mulan-2.mp4" type="video/mp4" /></video><div><span>PART 02 · AI NARRATIVE</span><h3>《花木兰》（下篇）</h3></div></div>
