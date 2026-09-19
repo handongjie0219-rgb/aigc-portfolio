@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { checklist, characters, filmBody, masterPrompt, negativePrompt, products, projectInfo, sceneInfo, shots, workflow } from "./ootd-script";
 import catfoodScript from "./catfood-script.json";
 import earphoneScript from "./earphone-script.json";
@@ -13,13 +14,23 @@ const royalPhysicianCharacters = ["沈薇","皇帝","皇后","掌事嬷嬷","黑
 const royalPhysicianScenes = ["现代撞车街道","景仁宫外院","景仁宫正殿","宫女偏房","景仁宫廊下休息区","惜华宫寝殿","太医院","宫女所与疫病隔离区","御书房","天牢","苏府书房","皇家祭坛","宫中药仓","宫外义庄","宫外医馆","女医署"];
 const royalPhysicianProps = ["现代急救医疗包","女主随身古代药箱","针灸银针包","诊脉配药套件","疫病防护消毒套件","验毒证物套件","假死药与解药","女主银针发簪","皇帝诏书","宫门通行腰牌","苏府密信证物","药仓账册证物","兵符与布防舆图","沈危佩剑与侍卫徽章","天牢钥匙与枷锁","药仓纵火物证","皇家祭坛礼器","贵妃药盏与香囊证物","女医署教学教具","男女主定情玉佩","皇权御玺","义庄假死棺木","宫女日常生活套件"];
 
-const sections = [
+type CollectionId = "ip" | "poster" | "type" | "banner" | "ads" | "drama";
+type HubId = "visual" | "video";
+
+const sections: { id: CollectionId; label: string; en: string; no: string; tone: string }[] = [
   { id: "ip", label: "IP设计", en: "CHARACTER & IDENTITY", no: "01", tone: "coral" },
   { id: "poster", label: "海报设计", en: "POSTER & CAMPAIGN", no: "02", tone: "blue" },
   { id: "type", label: "字体设计", en: "TYPE & LETTERING", no: "03", tone: "ivory" },
   { id: "banner", label: "Banner设计", en: "DIGITAL & COMMERCE", no: "04", tone: "lime" },
   { id: "ads", label: "AI广告", en: "AI COMMERCIAL FILM", no: "05", tone: "violet" },
   { id: "drama", label: "AI短剧", en: "AI NARRATIVE SERIES", no: "06", tone: "red" },
+];
+
+// 三个 IP 角色的入口信息：入口层卡片与首页概览共用一份数据。
+const ipCharacters = [
+  { key: "leafy", no: "01", kicker: "NATURAL HEALING", en: "LEAFY", cn: "叶芽小伙伴", tone: "自然 · 温暖 · 治愈", cover: "./ip-design/leafy/1.png", total: "6 组提案图 · 三视图 / 表情 / 配色 / 周边" },
+  { key: "breezy", no: "02", kicker: "OUTDOOR TECH", en: "BREEZY", cn: "风行伙伴", tone: "户外 · 科技 · 潮流", cover: "./ip-design/breezy/7.png", total: "7 组提案图 · 三视图 / 表情 / 产品 / 场景" },
+  { key: "mori", no: "03", kicker: "WARM NATURE", en: "MORI", cn: "一点小光", tone: "自然 · 温暖 · 治愈", cover: "./ip-design/mori/1.png", total: "6 组提案图 · 三视图 / 表情 / 细节 / 场景" },
 ];
 
 const posterWorks = [
@@ -143,6 +154,53 @@ export default function Home() {
   const [breezyOpen, setBreezyOpen] = useState(false);
   const [moriOpen, setMoriOpen] = useState(false);
   const [ipOpen, setIpOpen] = useState(false);
+  const [returnToHub, setReturnToHub] = useState<HubId | null>(null);
+
+  // 统一打开任一作品合集：hub 为空表示从首页概览卡直接进入，关闭时直接回首页。
+  const openCollection = (id: CollectionId, hub: HubId | null = null) => {
+    setMenuOpen(false);
+    setVisualHubOpen(false);
+    setVideoHubOpen(false);
+    setReturnToHub(hub);
+    setIpOpen(id === "ip");
+    setPosterOpen(id === "poster");
+    setTypeOpen(id === "type");
+    setBannerOpen(id === "banner");
+    setAdsOpen(id === "ads");
+    setDramaOpen(id === "drama");
+  };
+
+  // 关闭合集：只有从 hub 进来时才回到 hub，从首页概览卡进来则直接回首页。
+  const closeCollection = (which: CollectionId) => {
+    if (which === "ip") setIpOpen(false);
+    if (which === "poster") setPosterOpen(false);
+    if (which === "type") setTypeOpen(false);
+    if (which === "banner") setBannerOpen(false);
+    if (which === "ads") setAdsOpen(false);
+    if (which === "drama") setDramaOpen(false);
+    if (returnToHub === "visual") setVisualHubOpen(true);
+    if (returnToHub === "video") setVideoHubOpen(true);
+    setReturnToHub(null);
+  };
+
+  const hubLabel = returnToHub === "video" ? "AI视频" : "AI视觉";
+
+  // 打开某个 IP 角色的完整提案页面。
+  const openIpCharacter = (key: string) => {
+    setLeafyOpen(key === "leafy");
+    setBreezyOpen(key === "breezy");
+    setMoriOpen(key === "mori");
+  };
+
+  // Allow every IP card to open through a real URL as well as the React interaction.
+  // This keeps the detail entry reliable in embedded/static preview environments.
+  useEffect(() => {
+    const character = new URLSearchParams(window.location.search).get("ip");
+    if (!character || !["leafy", "breezy", "mori"].includes(character)) return;
+    setIpOpen(true);
+    openIpCharacter(character);
+    window.history.replaceState(null, "", `${window.location.pathname}${window.location.hash}`);
+  }, []);
 
   useEffect(() => {
     const backOneLevel = (event: KeyboardEvent) => {
@@ -168,12 +226,12 @@ export default function Home() {
       if (royalPhysicianScriptOpen) return setRoyalPhysicianScriptOpen(false);
       if (mulanAssetsOpen) return setMulanAssetsOpen(false);
       if (mulanScriptOpen) return setMulanScriptOpen(false);
-      if (ipOpen) { setIpOpen(false); return setVisualHubOpen(true); }
-      if (posterOpen) { setPosterOpen(false); return setVisualHubOpen(true); }
-      if (typeOpen) { setTypeOpen(false); return setVisualHubOpen(true); }
-      if (bannerOpen) { setBannerOpen(false); return setVisualHubOpen(true); }
-      if (adsOpen) { setAdsOpen(false); return setVideoHubOpen(true); }
-      if (dramaOpen) { setDramaOpen(false); return setVideoHubOpen(true); }
+      if (ipOpen) return closeCollection("ip");
+      if (posterOpen) return closeCollection("poster");
+      if (typeOpen) return closeCollection("type");
+      if (bannerOpen) return closeCollection("banner");
+      if (adsOpen) return closeCollection("ads");
+      if (dramaOpen) return closeCollection("drama");
       if (visualHubOpen) return setVisualHubOpen(false);
       if (videoHubOpen) return setVideoHubOpen(false);
     };
@@ -181,17 +239,20 @@ export default function Home() {
     const locked = visualHubOpen || videoHubOpen || ipOpen || posterOpen || typeOpen || bannerOpen || adsOpen || dramaOpen || selectedPoster !== null || selectedType !== null || selectedBanner !== null || selectedAdAsset !== null || scriptOpen || ootdAssetsOpen || catAssetsOpen || catScriptOpen || earAssetsOpen || earScriptOpen || candyAssetsOpen || candyScriptOpen || whiteWolfAssetsOpen || whiteWolfScriptOpen || royalPhysicianAssetsOpen || royalPhysicianScriptOpen || mulanAssetsOpen || mulanScriptOpen || leafyOpen || breezyOpen || moriOpen;
     document.body.style.overflow = locked ? "hidden" : "";
     return () => { window.removeEventListener("keydown", backOneLevel); document.body.style.overflow = ""; };
-  }, [visualHubOpen, videoHubOpen, ipOpen, posterOpen, typeOpen, bannerOpen, adsOpen, dramaOpen, selectedPoster, selectedType, selectedBanner, selectedAdAsset, scriptOpen, ootdAssetsOpen, catAssetsOpen, catScriptOpen, earAssetsOpen, earScriptOpen, candyAssetsOpen, candyScriptOpen, whiteWolfAssetsOpen, whiteWolfScriptOpen, royalPhysicianAssetsOpen, royalPhysicianScriptOpen, mulanAssetsOpen, mulanScriptOpen, leafyOpen, breezyOpen, moriOpen]);
+  }, [visualHubOpen, videoHubOpen, ipOpen, posterOpen, typeOpen, bannerOpen, adsOpen, dramaOpen, selectedPoster, selectedType, selectedBanner, selectedAdAsset, scriptOpen, ootdAssetsOpen, catAssetsOpen, catScriptOpen, earAssetsOpen, earScriptOpen, candyAssetsOpen, candyScriptOpen, whiteWolfAssetsOpen, whiteWolfScriptOpen, royalPhysicianAssetsOpen, royalPhysicianScriptOpen, mulanAssetsOpen, mulanScriptOpen, leafyOpen, breezyOpen, moriOpen, returnToHub]);
 
   const openVisualHub = () => {
     setVideoHubOpen(false); setAdsOpen(false); setDramaOpen(false);
     setIpOpen(false); setPosterOpen(false); setTypeOpen(false); setBannerOpen(false);
+    setReturnToHub(null);
     setVisualHubOpen(true);
   };
 
   const openVideoHub = () => {
     setVisualHubOpen(false); setIpOpen(false); setPosterOpen(false); setTypeOpen(false); setBannerOpen(false);
-    setAdsOpen(false); setDramaOpen(false); setVideoHubOpen(true);
+    setAdsOpen(false); setDramaOpen(false);
+    setReturnToHub(null);
+    setVideoHubOpen(true);
   };
 
   const go = (id: string) => {
@@ -252,14 +313,14 @@ export default function Home() {
 
       {visualHubOpen && (
         <section className="portfolio-hub visual-hub" role="dialog" aria-modal="true" aria-label="AI视觉作品分类">
-          <button className="portfolio-hub-close" type="button" onClick={() => setVisualHubOpen(false)} aria-label="关闭">×</button>
+          <button className="portfolio-hub-close" type="button" onClick={() => setVisualHubOpen(false)} aria-label="返回首页">← 返回首页</button>
           <div className="portfolio-hub-inner">
             <header className="portfolio-hub-heading"><span>01 / VISUAL</span><h2>AI视觉</h2><p>从角色、海报、字体到商业 Banner，进入不同的视觉设计内容。</p></header>
             <div className="portfolio-hub-grid visual-grid">
-              <button type="button" onClick={() => { setVisualHubOpen(false); setIpOpen(true); }}><span>01</span><small>CHARACTER & IP</small><h3>IP设计</h3><p>角色设定 · 表情延展 · 场景应用</p><i>进入作品 ↗</i></button>
-              <button type="button" onClick={() => { setVisualHubOpen(false); setPosterOpen(true); }}><span>02</span><small>POSTER DESIGN</small><h3>海报设计</h3><p>品牌视觉 · 主题海报 · 商业创意</p><i>进入作品 ↗</i></button>
-              <button type="button" onClick={() => { setVisualHubOpen(false); setTypeOpen(true); }}><span>03</span><small>TYPE DESIGN</small><h3>字体设计</h3><p>字体实验 · 字形语言 · 动态排版</p><i>进入作品 ↗</i></button>
-              <button type="button" onClick={() => { setVisualHubOpen(false); setBannerOpen(true); }}><span>04</span><small>BANNER DESIGN</small><h3>Banner设计</h3><p>电商视觉 · 信息编排 · 营销氛围</p><i>进入作品 ↗</i></button>
+              <button type="button" onClick={() => openCollection("ip", "visual")}><span>01</span><small>CHARACTER & IP</small><h3>IP设计</h3><p>角色设定 · 表情延展 · 场景应用</p><i>进入作品 ↗</i></button>
+              <button type="button" onClick={() => openCollection("poster", "visual")}><span>02</span><small>POSTER DESIGN</small><h3>海报设计</h3><p>品牌视觉 · 主题海报 · 商业创意</p><i>进入作品 ↗</i></button>
+              <button type="button" onClick={() => openCollection("type", "visual")}><span>03</span><small>TYPE DESIGN</small><h3>字体设计</h3><p>字体实验 · 字形语言 · 动态排版</p><i>进入作品 ↗</i></button>
+              <button type="button" onClick={() => openCollection("banner", "visual")}><span>04</span><small>BANNER DESIGN</small><h3>Banner设计</h3><p>电商视觉 · 信息编排 · 营销氛围</p><i>进入作品 ↗</i></button>
             </div>
           </div>
         </section>
@@ -267,12 +328,12 @@ export default function Home() {
 
       {videoHubOpen && (
         <section className="portfolio-hub video-hub" role="dialog" aria-modal="true" aria-label="AI视频作品分类">
-          <button className="portfolio-hub-close" type="button" onClick={() => setVideoHubOpen(false)} aria-label="关闭">×</button>
+          <button className="portfolio-hub-close" type="button" onClick={() => setVideoHubOpen(false)} aria-label="返回首页">← 返回首页</button>
           <div className="portfolio-hub-inner">
             <header className="portfolio-hub-heading"><span>02 / MOTION</span><h2>AI视频</h2><p>以生成式影像连接商业传播与叙事表达。</p></header>
             <div className="portfolio-hub-grid video-grid">
-              <button type="button" onClick={() => { setVideoHubOpen(false); setAdsOpen(true); }}><span>01</span><small>AI COMMERCIAL</small><h3>AI广告</h3><p>产品影像 · 品牌广告 · 视觉营销</p><i>进入作品 ↗</i></button>
-              <button type="button" onClick={() => { setVideoHubOpen(false); setDramaOpen(true); }}><span>02</span><small>AI NARRATIVE</small><h3>AI短剧</h3><p>角色资产 · 剧本创作 · 连续叙事</p><i>进入作品 ↗</i></button>
+              <button type="button" onClick={() => openCollection("ads", "video")}><span>01</span><small>AI COMMERCIAL</small><h3>AI广告</h3><p>产品影像 · 品牌广告 · 视觉营销</p><i>进入作品 ↗</i></button>
+              <button type="button" onClick={() => openCollection("drama", "video")}><span>02</span><small>AI NARRATIVE</small><h3>AI短剧</h3><p>角色资产 · 剧本创作 · 连续叙事</p><i>进入作品 ↗</i></button>
             </div>
           </div>
         </section>
@@ -309,7 +370,6 @@ export default function Home() {
             </section>
           </div>
           <div className="profile-tags"><span>视觉设计</span><span>AI 影像</span><span>创意策划</span><span>动态叙事</span></div>
-          <button className="profile-next" onClick={() => go("ip")}><span>查看作品</span><b>↘</b></button>
         </div>
         <div className="profile-side-note">BASED IN CHINA · CREATING EVERYWHERE</div>
       </section>
@@ -323,7 +383,17 @@ export default function Home() {
 
         <div className="project-grid">
           {sections.map((item, index) => (
-            <article id={["ip", "poster", "type", "banner", "ads", "drama"].includes(item.id) ? undefined : item.id} className={`project-card ${item.tone}`} key={item.id} onClick={["ip", "poster", "type", "banner", "ads", "drama"].includes(item.id) ? () => go(item.id) : undefined}>
+            <article
+              className={`project-card ${item.tone}`}
+              key={item.id}
+              role="button"
+              tabIndex={0}
+              aria-label={`打开${item.label}作品合集`}
+              onClick={() => openCollection(item.id)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") { event.preventDefault(); openCollection(item.id); }
+              }}
+            >
               <div className="card-visual">
                 <span className="card-number">{item.no}</span>
                 <div className="art-shape" aria-hidden="true">
@@ -342,24 +412,61 @@ export default function Home() {
         </div>
 
         <section id="ip" className={`ip-showcase ${ipOpen ? "ip-expanded" : ""}`}>
-          <button className="ip-master-entry" onClick={() => setIpOpen(true)}>
+          <button className="ip-master-entry" type="button" onClick={() => openCollection("ip")} aria-label="打开 IP设计 完整作品合集">
             <span className="ip-master-index">01 / CHARACTER &amp; IDENTITY</span>
-            <div className="ip-master-orbits" aria-hidden="true"><i /><i /><i /><b>IP</b></div>
+            <div className="ip-master-orbits" aria-hidden="true">
+              {ipCharacters.map((item) => <i key={item.key} style={{ backgroundImage: `url('${item.cover}')` }} />)}
+              <b>IP</b>
+            </div>
             <div className="ip-master-copy"><small>CHARACTER · EMOTION · BRAND WORLD</small><h2>IP设计</h2><h3>三个角色世界，三种鲜明的品牌性格。</h3><p>Leafy · Breezy · Mori</p></div>
             <em>进入完整 IP 系列 ↗</em>
           </button>
-          {ipOpen && <button className="ip-master-close" onClick={() => { setIpOpen(false); setVisualHubOpen(true); }}>← 返回 AI视觉</button>}
-          <div className="ip-heading"><div><p className="section-kicker">IP DESIGN COLLECTION · 2026</p><h2>IP设计<em>三种氛围入口。</em></h2></div><p>从角色造型、表情系统、色彩语言到周边应用，以完整提案呈现不同性格的品牌角色。</p></div>
-          <div className="ip-entry-grid">
-            <button className="ip-entry leafy-entry" onClick={() => setLeafyOpen(true)}><span>01 / NATURAL HEALING</span><div><b>LEAFY</b><h3>叶芽小伙伴</h3><p>自然、温暖、治愈</p></div><i>进入完整内容 ↗</i></button>
-            <button className="ip-entry breezy-entry" onClick={() => setBreezyOpen(true)}><span>02 / OUTDOOR TECH</span><div><b>BREEZY</b><h3>风行伙伴</h3><p>户外 · 科技 · 潮流</p></div><i>进入完整内容 ↗</i></button>
-            <button className="ip-entry mori-entry" onClick={() => setMoriOpen(true)}><span>03 / WARM NATURE</span><div><b>MORI</b><h3>一点小光</h3><p>自然 · 温暖 · 治愈</p></div><i>进入完整内容 ↗</i></button>
+          {ipOpen && (
+            <>
+              <span className="ip-esc-hint" aria-hidden="true">ESC 返回</span>
+              <button className="ip-master-close" type="button" onClick={() => closeCollection("ip")}>← {returnToHub ? `返回 ${hubLabel}` : "返回首页"}</button>
+            </>
+          )}
+          <div className="ip-heading">
+            <div><p className="section-kicker">IP DESIGN COLLECTION · 2026</p><h2>IP设计<em>三种氛围入口。</em></h2></div>
+            <p>从角色造型、表情系统、色彩语言到周边应用，以完整提案呈现不同性格的品牌角色。三个角色共 19 组提案图，点击任意角色查看完整内容。</p>
+          </div>
+          <div
+            className="ip-entry-grid"
+            onClickCapture={(event) => {
+              const entry = (event.target as HTMLElement).closest<HTMLElement>("[data-ip-key]");
+              if (entry?.dataset.ipKey) openIpCharacter(entry.dataset.ipKey);
+            }}
+          >
+            {ipCharacters.map((item) => (
+              <a
+                className={`ip-entry ${item.key}-entry`}
+                key={item.key}
+                data-ip-key={item.key}
+                href={`?ip=${item.key}`}
+                style={{ backgroundImage: `url('${item.cover}')` }}
+                onClick={(event) => {
+                  event.preventDefault();
+                  openIpCharacter(item.key);
+                }}
+                aria-label={`进入 ${item.en} ${item.cn} 完整设计提案`}
+              >
+                <span>{item.no} / {item.kicker}</span>
+                <div>
+                  <b>{item.en}</b>
+                  <h3>{item.cn}</h3>
+                  <p>{item.tone}</p>
+                  <small>{item.total}</small>
+                </div>
+                <i>进入完整内容 ↗</i>
+              </a>
+            ))}
           </div>
         </section>
 
-        {leafyOpen && <div className="script-document leafy-document" role="dialog" aria-modal="true" aria-label="Leafy IP完整设计提案" onClick={() => setLeafyOpen(false)}><button className="script-close" onClick={() => setLeafyOpen(false)}>关闭内容 ×</button><article className="leafy-page" onClick={event=>event.stopPropagation()}><header><span>IP DESIGN · CASE 01</span><h2>Leafy<em>与小小的叶子，走进更温暖的日常。</em></h2><p>角色三视图 · 表情延展 · 色彩方案 · 细节展示 · 周边应用</p></header><div className="leafy-gallery">{["主视觉与角色定位","角色三视图","表情延展系统","品牌色彩方案","造型细节展示","周边应用系统"].map((title,index)=><figure key={title}><img src={`./ip-design/leafy/${index+1}.png`} alt={`Leafy ${title}`} /><figcaption><span>{String(index+1).padStart(2,"0")}</span><b>{title}</b></figcaption></figure>)}</div></article></div>}
-        {breezyOpen && <div className="script-document breezy-document" role="dialog" aria-modal="true" aria-label="Breezy IP完整设计提案" onClick={() => setBreezyOpen(false)}><button className="script-close" onClick={() => setBreezyOpen(false)}>关闭内容 ×</button><article className="breezy-page" onClick={event=>event.stopPropagation()}><header><span>IP DESIGN · CASE 02</span><h2>BREEZY<em>轻盈风感，户外随行。</em></h2><p>角色设计 · 表情延展 · 产品展示 · 细节设计 · 配色方案 · 场景应用</p></header><div className="breezy-gallery">{[{file:7,title:"主视觉与角色定位"},{file:1,title:"角色三视图"},{file:2,title:"表情延展"},{file:3,title:"产品展示"},{file:4,title:"细节展示"},{file:5,title:"配色方案"},{file:6,title:"场景应用"}].map(item=><figure key={item.title}><img src={`./ip-design/breezy/${item.file}.png`} alt={`Breezy ${item.title}`} /><figcaption><b>{item.title}</b></figcaption></figure>)}</div></article></div>}
-        {moriOpen && <div className="script-document mori-document" role="dialog" aria-modal="true" aria-label="Mori IP完整设计提案" onClick={() => setMoriOpen(false)}><button className="script-close" onClick={() => setMoriOpen(false)}>关闭内容 ×</button><article className="mori-page" onClick={event=>event.stopPropagation()}><header><span>IP DESIGN · CASE 03</span><h2>Mori<em>一点小光，温暖更大的世界。</em></h2><p>角色介绍 · 角色三视图 · 表情延展 · 细节展示 · 场景应用</p></header><div className="mori-gallery">{[{file:1,title:"主视觉与角色定位"},{file:2,title:"角色介绍"},{file:3,title:"角色三视图"},{file:4,title:"表情延展"},{file:6,title:"细节展示"},{file:5,title:"场景应用"}].map(item=><figure key={item.title}><img src={`./ip-design/mori/${item.file}.png`} alt={`Mori ${item.title}`} /><figcaption><b>{item.title}</b></figcaption></figure>)}</div></article></div>}
+        {leafyOpen && typeof document !== "undefined" && createPortal(<div className="script-document leafy-document" role="dialog" aria-modal="true" aria-label="Leafy IP完整设计提案" onClick={() => setLeafyOpen(false)}><button className="script-close" onClick={() => setLeafyOpen(false)}>← 返回上一层</button><article className="leafy-page" onClick={event=>event.stopPropagation()}><header><span>IP DESIGN · CASE 01</span><h2>Leafy<em>与小小的叶子，走进更温暖的日常。</em></h2><p>角色三视图 · 表情延展 · 色彩方案 · 细节展示 · 周边应用</p></header><div className="leafy-gallery">{["主视觉与角色定位","角色三视图","表情延展系统","品牌色彩方案","造型细节展示","周边应用系统"].map((title,index)=><figure key={title}><img src={`./ip-design/leafy/${index+1}.png`} alt={`Leafy ${title}`} /><figcaption><span>{String(index+1).padStart(2,"0")}</span><b>{title}</b></figcaption></figure>)}</div></article></div>, document.body)}
+        {breezyOpen && typeof document !== "undefined" && createPortal(<div className="script-document breezy-document" role="dialog" aria-modal="true" aria-label="Breezy IP完整设计提案" onClick={() => setBreezyOpen(false)}><button className="script-close" onClick={() => setBreezyOpen(false)}>← 返回上一层</button><article className="breezy-page" onClick={event=>event.stopPropagation()}><header><span>IP DESIGN · CASE 02</span><h2>BREEZY<em>轻盈风感，户外随行。</em></h2><p>角色设计 · 表情延展 · 产品展示 · 细节设计 · 配色方案 · 场景应用</p></header><div className="breezy-gallery">{[{file:7,title:"主视觉与角色定位"},{file:1,title:"角色三视图"},{file:2,title:"表情延展"},{file:3,title:"产品展示"},{file:4,title:"细节展示"},{file:5,title:"配色方案"},{file:6,title:"场景应用"}].map(item=><figure key={item.title}><img src={`./ip-design/breezy/${item.file}.png`} alt={`Breezy ${item.title}`} /><figcaption><b>{item.title}</b></figcaption></figure>)}</div></article></div>, document.body)}
+        {moriOpen && typeof document !== "undefined" && createPortal(<div className="script-document mori-document" role="dialog" aria-modal="true" aria-label="Mori IP完整设计提案" onClick={() => setMoriOpen(false)}><button className="script-close" onClick={() => setMoriOpen(false)}>← 返回上一层</button><article className="mori-page" onClick={event=>event.stopPropagation()}><header><span>IP DESIGN · CASE 03</span><h2>Mori<em>一点小光，温暖更大的世界。</em></h2><p>角色介绍 · 角色三视图 · 表情延展 · 细节展示 · 场景应用</p></header><div className="mori-gallery">{[{file:1,title:"主视觉与角色定位"},{file:2,title:"角色介绍"},{file:3,title:"角色三视图"},{file:4,title:"表情延展"},{file:6,title:"细节展示"},{file:5,title:"场景应用"}].map(item=><figure key={item.title}><img src={`./ip-design/mori/${item.file}.png`} alt={`Mori ${item.title}`} /><figcaption><b>{item.title}</b></figcaption></figure>)}</div></article></div>, document.body)}
 
         <section id="poster" className="poster-showcase">
           <button className="poster-entry" onClick={() => setPosterOpen(true)}>
@@ -398,8 +505,8 @@ export default function Home() {
           </div>
         </section>
 
-        {posterOpen && <div className="script-document poster-document" role="dialog" aria-modal="true" aria-label="海报设计完整作品集" onClick={() => { setPosterOpen(false); setVisualHubOpen(true); }}>
-          <button className="script-close" onClick={() => { setPosterOpen(false); setVisualHubOpen(true); }}>← 返回 AI视觉</button>
+        {posterOpen && <div className="script-document poster-document" role="dialog" aria-modal="true" aria-label="海报设计完整作品集" onClick={() => closeCollection("poster")}>
+          <button className="script-close" onClick={() => closeCollection("poster")}>← {returnToHub ? `返回 ${hubLabel}` : "返回首页"}</button>
           <article className="poster-page" onClick={event => event.stopPropagation()}>
             <header><span>POSTER DESIGN · COMPLETE COLLECTION</span><h2>海报设计<em>完整作品集。</em></h2><p>商业产品视觉、影视叙事海报与生活方式插画，按创作方向分类呈现。</p></header>
             <div className="poster-single-pages">
@@ -462,8 +569,8 @@ export default function Home() {
           </div>
         </section>
 
-        {typeOpen && <div className="script-document type-document" role="dialog" aria-modal="true" aria-label="字体设计完整作品集" onClick={() => { setTypeOpen(false); setVisualHubOpen(true); }}>
-          <button className="script-close" onClick={() => { setTypeOpen(false); setVisualHubOpen(true); }}>← 返回 AI视觉</button>
+        {typeOpen && <div className="script-document type-document" role="dialog" aria-modal="true" aria-label="字体设计完整作品集" onClick={() => closeCollection("type")}>
+          <button className="script-close" onClick={() => closeCollection("type")}>← {returnToHub ? `返回 ${hubLabel}` : "返回首页"}</button>
           <article className="type-page" onClick={event => event.stopPropagation()}>
             <header><span>TYPE DESIGN · COMPLETE COLLECTION</span><h2>字体设计<em>视觉实验集。</em></h2><p>从结构字标到立体促销标题，以不同字体语言回应品牌、活动与内容传播场景。</p></header>
             <div className="type-modal-groups">
@@ -515,8 +622,8 @@ export default function Home() {
           </div>
         </section>
 
-        {bannerOpen && <div className="script-document banner-document" role="dialog" aria-modal="true" aria-label="Banner设计完整作品集" onClick={() => { setBannerOpen(false); setVisualHubOpen(true); }}>
-          <button className="script-close" onClick={() => { setBannerOpen(false); setVisualHubOpen(true); }}>← 返回 AI视觉</button>
+        {bannerOpen && <div className="script-document banner-document" role="dialog" aria-modal="true" aria-label="Banner设计完整作品集" onClick={() => closeCollection("banner")}>
+          <button className="script-close" onClick={() => closeCollection("banner")}>← {returnToHub ? `返回 ${hubLabel}` : "返回首页"}</button>
           <article className="banner-page" onClick={event => event.stopPropagation()}>
             <header><span>BANNER DESIGN · COMPLETE COLLECTION</span><h2>Banner设计<em>数字商业视觉。</em></h2><p>围绕餐饮、美妆、东方生活与潮流数码场景，以超宽画幅集中表达商品氛围、核心卖点和品牌情绪。</p></header>
             <div className="banner-single-pages">
@@ -553,7 +660,7 @@ export default function Home() {
             <div className="ads-entry-copy"><small>GENERATIVE MOTION · BRAND STORY</small><h2>AI广告</h2><h3>三组影像案例，一套完整生成链路。</h3><p>时尚穿搭、宠物食品与沉浸声场</p></div>
             <em>播放完整作品集 ↗</em>
           </button>
-          {adsOpen && <button className="ads-close" onClick={() => { setAdsOpen(false); setVideoHubOpen(true); }}>← 返回 AI视频</button>}
+          {adsOpen && <button className="ads-close" onClick={() => closeCollection("ads")}>← {returnToHub ? `返回 ${hubLabel}` : "返回首页"}</button>}
           <header className="showcase-title"><span>05 / SELECTED WORKS</span><h2>AI广告</h2><p>AI COMMERCIAL FILMS</p></header>
           <div className="ad-heading">
             <p className="section-kicker">AI COMMERCIAL CASE · OOTD</p>
@@ -674,7 +781,7 @@ export default function Home() {
             <div className="drama-master-copy"><small>STORY · CHARACTER · CINEMATIC WORLD</small><h2>AI短剧</h2><h3>四部故事，进入完整影像叙事宇宙。</h3><p>现实亲情、奇幻史诗、宫廷逆袭与巾帼传奇</p></div>
             <em>进入短剧作品集 ↗</em>
           </button>
-          {dramaOpen && <button className="drama-master-close" onClick={() => { setDramaOpen(false); setVideoHubOpen(true); }}>← 返回 AI视频</button>}
+          {dramaOpen && <button className="drama-master-close" onClick={() => closeCollection("drama")}>← {returnToHub ? `返回 ${hubLabel}` : "返回首页"}</button>}
           <header className="showcase-title drama-showcase-title"><span>06 / SELECTED WORKS</span><h2>AI短剧</h2><p>AI NARRATIVE SERIES</p></header>
           <div className="drama-heading"><p className="section-kicker">AI NARRATIVE SERIES · CASE 01</p><h2>最后一颗糖<em>有些等待，从未过期。</em></h2><p>一颗被珍藏多年的水果糖，连接童年赠糖、成年离乡、电话牵挂与返乡重逢。以现实主义影像呈现跨越时间的亲情守候。</p></div>
           <div id="video-candy" className="drama-film"><video controls playsInline preload="metadata" poster="./ai-drama/last-candy/candy.webp"><source src="./ai-drama/last-candy/last-candy.mp4" type="video/mp4" /></video><div><span>03:30 · 16:9 · FAMILY DRAMA</span><h3>一颗糖，等一个人回家。</h3></div></div>
@@ -793,7 +900,7 @@ export default function Home() {
         <div className="closing-glow closing-glow-two" />
         <div className="closing-thanks">
           <span>THANKS FOR WATCHING</span>
-          <h2>谢谢<br /><em>观看</em></h2>
+          <h2><span>谢谢</span><em>观看</em></h2>
           <p>让每一次创意，都成为有生命的影像。</p>
         </div>
         <div className="closing-contact">
